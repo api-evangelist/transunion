@@ -1,10 +1,55 @@
 aid: transunion
 url: https://raw.githubusercontent.com/api-evangelist/transunion/refs/heads/main/apis.yml
-name: Transunion
+name: TransUnion
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-description: 'Fortune 1000 company Transunion. Public API documentation has not yet been catalogued in the API Evangelist network.'
+tags:
+  - Financial
+  - Credit Reporting
+  - Risk
+  - Identity
+  - Fraud
+  - Marketing
+description: 'A global information and insights company providing credit reporting, risk, fraud, and identity solutions. One of the three largest consumer credit bureaus in the United States, serving businesses and consumers across multiple international markets.'
 created: '2026-05-05'
-modified: '2026-05-05'
+modified: '2026-05-16'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: transunion:global-developer-portal
+    name: TransUnion Global Developer Portal
+    description: 'TransUnion''s Global Developer Portal hosts API products for credit, identity verification, fraud prevention, and consumer risk decisioning. Access typically requires a business agreement with TransUnion.'
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.transunion.com/
+    baseURL: https://developer.transunion.com/
+    tags:
+      - Credit Reporting
+      - Identity
+      - Fraud Prevention
+      - Risk Decisioning
+      - Consumer Insights
+    properties:
+      - type: Documentation
+        url: https://developer.transunion.com/
+      - type: Solutions
+        url: https://www.transunion.com/business
+common:
+  - type: Website
+    url: https://www.transunion.com/
+  - type: Developer
+    url: https://developer.transunion.com/
+  - type: Business
+    url: https://www.transunion.com/business
+  - type: Solutions
+    url: https://www.transunion.com/solutions
+  - type: News
+    url: https://newsroom.transunion.com/
+  - type: Investors
+    url: https://investors.transunion.com/
+  - type: Careers
+    url: https://careers.transunion.com/
+  - type: About
+    url: https://www.transunion.com/about-us
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
+    X: '@apievangelist'
