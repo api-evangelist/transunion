@@ -33,6 +33,8 @@ apis:
       - type: Solutions
         url: https://www.transunion.com/business
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/transunion
   - type: Website
     url: https://www.transunion.com/
   - type: Developer
