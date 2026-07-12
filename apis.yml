@@ -33,6 +33,8 @@ apis:
       - type: Solutions
         url: https://www.transunion.com/business
 common:
+  - type: DomainSecurity
+    url: security/transunion-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/transunion
   - type: Website
@@ -51,6 +53,8 @@ common:
     url: https://careers.transunion.com/
   - type: About
     url: https://www.transunion.com/about-us
+  - url: https://newsroom.transunion.com/feed/
+    type: Blog
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
