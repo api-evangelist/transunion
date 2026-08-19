@@ -1,0 +1,101 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+docs: https://neustar.github.io/tcs-apis/
+note: >-
+  Standards assertions below are taken from what the published TruContact TCS spec
+  says about itself — info.description names the ATIS/IETF/3GPP standards the AS and
+  VS implement, and the schemas carry the SIP/PASSporT vocabulary that backs the
+  claim. Nothing here is inferred from TransUnion marketing. No `Compliance` pointer
+  is emitted: TransUnion's corporate compliance/trust pages sit behind Cloudflare bot
+  management (403 to every non-browser client on 2026-08-13), so we could not read a
+  published certification list to cite.
+standards:
+  - id: rfc8224-stir
+    name: 'RFC 8224 — Authenticated Identity Management in SIP'
+    conforms: true
+    evidence: >-
+      README and info.description: "A call Authentication Service (AS) and Verification
+      Service (VS) are defined in IETF RFC 8224 specification".
+  - id: atis-1000074-shaken
+    name: 'ATIS-1000074 — SHAKEN: Signature-based Handling of Asserted information using toKENs'
+    conforms: true
+    evidence: info.description lists ATIS-1000074 in the core supported standard set.
+  - id: atis-1000078
+    name: 'ATIS-1000078 — NS/EP Priority Service SIP RPH signing and verification using PASSporTs'
+    conforms: true
+    evidence: named in info.description supported-standards list.
+  - id: atis-1000080
+    name: 'ATIS-1000080 — SHAKEN Governance Model and Certificate Management'
+    conforms: true
+    evidence: named in info.description supported-standards list.
+  - id: atis-1000084
+    name: 'ATIS-1000084 — Operational/management considerations for SHAKEN STI-CAs and PAs'
+    conforms: true
+    evidence: named in info.description supported-standards list.
+  - id: atis-1000085
+    name: 'ATIS-1000085 — SHAKEN support of the "div" PASSporT'
+    conforms: true
+    evidence: >-
+      named in info.description; the divSigning/divVerification operations exist on the
+      feature/allEndpoints branch of neustar/tcs-apis and the div error classes
+      (CertificateNotValidForDiv, DivPassportInvalid family) appear in the published spec.
+  - id: atis-1000092
+    name: 'ATIS-1000092 — SHAKEN Delegate Certificates'
+    conforms: true
+    evidence: named in info.description supported-standards list.
+  - id: atis-1000093
+    name: 'ATIS-1000093 — Toll-Free Numbers in the SHAKEN Framework'
+    conforms: true
+    evidence: named in info.description supported-standards list.
+  - id: atis-1000094
+    name: 'ATIS-1000094 — SHAKEN: Calling Name and Rich Call Data handling procedures'
+    conforms: true
+    evidence: >-
+      named in info.description; the Verification Service operations expose cnam and
+      cnamPrefix parameters and CnamDataNotFound / CnamNotAuthorized errors.
+  - id: atis-1000098
+    name: 'ATIS-1000098 — SIP Resource-Priority and Priority header signing for emergency calling'
+    conforms: true
+    evidence: >-
+      named in info.description; rphSigning/rphVerification appear on the
+      feature/allEndpoints branch and rph PASSporT types are described in the tag copy.
+  - id: 3gpp-ts-24229
+    name: '3GPP TS 24.229 Release 17.10.0 — IMS call control (Ms reference point)'
+    conforms: true
+    evidence: >-
+      A second published spec, openapi/transunion-trucontact-3gpp-call-authentication-openapi.yml,
+      declares version "1.0, TS 24.229, Release 17.10.0" and models the Ms reference point
+      signing/verification messages.
+  - id: openapi-3-1
+    conforms: true
+    evidence: openapi = 3.1.0 in the primary TCS spec (the 3GPP companion is 3.0.3).
+  - id: oauth2
+    conforms: false
+    evidence: no oauth2 securityScheme in either spec; auth is an apiKey query parameter or client-IP allowlist.
+  - id: oidc
+    conforms: false
+    evidence: no /.well-known/openid-configuration served on any reachable host.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      errors use a vendor envelope ({error_id, http_status_code, sip_code, timestamp, reason})
+      served as application/json, not application/problem+json.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: no Sunset/Deprecation header documented in either spec.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      no Idempotency-Key parameter or header on any of the nine operations, and no retry
+      contract in the prose — see conventions/transunion-conventions.yml.
+  - id: pagination
+    conforms: false
+    not_applicable: true
+    evidence: all nine operations are single-shot POSTs; there is no collection to page.
+  - id: mutual-tls
+    conforms: true
+    scope: api.iovation.com (TruValidate Device Risk)
+    evidence: >-
+      probed 2026-08-13 — GET https://api.iovation.com/ returns 403
+      "Unauthorized - missing/invalid client certificate".

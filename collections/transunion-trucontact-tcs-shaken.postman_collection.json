@@ -1,0 +1,3213 @@
+{
+  "item": [
+    {
+      "id": "88b178fb-dc2a-4d62-ba71-cfa741895a07",
+      "name": "Authentication Service",
+      "description": {
+        "content": "This API endpoint uses the following data elements ('required' elements identified) in the REQUEST to create a SIP Identity header. Based on the HTTP header of 'Content-Type' (e.g. json, text/plain), the request body (data) can include various data elements. Please refer to the examples for more details.\n\nThree different API entry points are defined for SIP Identity header creation:\n  * Accepts requests in JSON format and produces responses in JSON format\n  * Accepts text messages in text/plain and produces responses in JSON format\n  * Accepts text messages in text/plain and produces responses in text/plain format\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbeafe9e-c78b-492c-b0e2-c13f15155110",
+          "name": "Request & Response in JSON Format",
+          "request": {
+            "name": "Request & Response in JSON Format",
+            "description": {
+              "content": "This API entry point accepts requests and produces responses in JSON Format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authn",
+                "v2",
+                "identityj-j"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "ppt",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "attest",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "origid",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"date\": \"<string>\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"<string>\",\n  \"diversion\": \"<string>\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\",\n  \"rcd_hash_algorithm\": \"<string>\",\n  \"rcd_signature\": \"<string>\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<string>\",\n  \"dest_cc\": \"<string>\",\n  \"attest\": \"<string>\",\n  \"origid\": \"<string>\",\n  \"request_id\": \"<string>\",\n  \"priority\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9dad343b-4305-4c85-a1e0-bd2234fa7fc2",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identityj-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identity\": \"eyJhbGciOiJFUzI1NiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL2NhLWNtcy5uZXVzdGFybGFiLmJpejo4MDAwL2NlcnRzL2QwY2JjM2Y2YmFjMGQwYTFmNzlmNzg2YWE1NTQzYjAxIn0.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2MjEwMTE0MjYsIm9yaWciOnsidXJpIjoic2lwOmFsaWNlQGV4YW1wbGUuY29tIn19.RC99mmfDvD2BuMZnKwUBGBeG5NyjoQLign1Rjya6rJYv7LShPyDToL7hac1PnurB2kK3ojYVKg0TDMsIOj05RQ;info=<http://ca-cms.orglab.biz:8000/certs/d0cbc3f6bac0d0a1f79f786aa5543b01>;alg=ES256\",\n  \"date\": \"Fri, 14 May 2021 16:57:06 GMT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c97b9fdd-f85a-424b-a290-6e2524dbdc8f",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identityj-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"ApiKeyRequired\",\n  \"http_status_code\": 400,\n  \"sip_code\": 400,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"API key is required\",\n  \"developer_message\": \"API key is required\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adb7c54e-73d5-47c7-855d-5e02316c99e6",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identityj-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"SipInterfaceCidrInvalid\",\n  \"http_status_code\": 500,\n  \"sip_code\": 500,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"SIP interface cidr is invalid\",\n  \"developer_message\": \"SIP interface cidr is invalid\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ed2d6b7-4aa8-474a-8f42-887950d5e5eb",
+          "name": "Text Message & Response in JSON Format",
+          "request": {
+            "name": "Text Message & Response in JSON Format",
+            "description": {
+              "content": "This API entry point accepts text messages as requests and produces responses in JSON Format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authn",
+                "v2",
+                "identitys-j"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "ppt",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "attest",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "origid",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"date\": \"<string>\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"<string>\",\n  \"diversion\": \"<string>\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\",\n  \"rcd_hash_algorithm\": \"<string>\",\n  \"rcd_signature\": \"<string>\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<string>\",\n  \"dest_cc\": \"<string>\",\n  \"attest\": \"<string>\",\n  \"origid\": \"<string>\",\n  \"request_id\": \"<string>\",\n  \"priority\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f98dacab-41ca-436c-910d-57ff4695896e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitys-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identity\": \"eyJhbGciOiJFUzI1NiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL2NhLWNtcy5uZXVzdGFybGFiLmJpejo4MDAwL2NlcnRzL2QwY2JjM2Y2YmFjMGQwYTFmNzlmNzg2YWE1NTQzYjAxIn0.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2MjEwMTE0MjYsIm9yaWciOnsidXJpIjoic2lwOmFsaWNlQGV4YW1wbGUuY29tIn19.RC99mmfDvD2BuMZnKwUBGBeG5NyjoQLign1Rjya6rJYv7LShPyDToL7hac1PnurB2kK3ojYVKg0TDMsIOj05RQ;info=<http://ca-cms.orglab.biz:8000/certs/d0cbc3f6bac0d0a1f79f786aa5543b01>;alg=ES256\",\n  \"date\": \"Fri, 14 May 2021 16:57:06 GMT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "144e0179-06c5-4cae-ada1-df0de6e90dab",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitys-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"ApiKeyRequired\",\n  \"http_status_code\": 400,\n  \"sip_code\": 400,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"API key is required\",\n  \"developer_message\": \"API key is required\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d21ce85a-7bf5-43f9-8365-86897b5b3b8d",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitys-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"SipInterfaceCidrInvalid\",\n  \"http_status_code\": 500,\n  \"sip_code\": 500,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"SIP interface cidr is invalid\",\n  \"developer_message\": \"SIP interface cidr is invalid\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7dc4abf-3378-4166-b281-f49f3c1bd9aa",
+          "name": "Text Message & Response in Text Format",
+          "request": {
+            "name": "Text Message & Response in Text Format",
+            "description": {
+              "content": "This API entry point accepts text messages as requests and produces responses in text format. If the API client prefers full SIP INVITE messages in the responses with SIP Identity headers embedded in, the following HTTP header needs be specified in the request:\n```\nAccept: text/plain\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authn",
+                "v2",
+                "identitys-s"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "ppt",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "attest",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "origid",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"date\": \"<string>\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"<string>\",\n  \"diversion\": \"<string>\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\",\n  \"rcd_hash_algorithm\": \"<string>\",\n  \"rcd_signature\": \"<string>\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<string>\",\n  \"dest_cc\": \"<string>\",\n  \"attest\": \"<string>\",\n  \"origid\": \"<string>\",\n  \"request_id\": \"<string>\",\n  \"priority\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2955c6b-e8b8-44e9-b234-ad1a31dfe0fa",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitys-s"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identity\": \"eyJhbGciOiJFUzI1NiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL2NhLWNtcy5uZXVzdGFybGFiLmJpejo4MDAwL2NlcnRzL2QwY2JjM2Y2YmFjMGQwYTFmNzlmNzg2YWE1NTQzYjAxIn0.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2MjEwMTE0MjYsIm9yaWciOnsidXJpIjoic2lwOmFsaWNlQGV4YW1wbGUuY29tIn19.RC99mmfDvD2BuMZnKwUBGBeG5NyjoQLign1Rjya6rJYv7LShPyDToL7hac1PnurB2kK3ojYVKg0TDMsIOj05RQ;info=<http://ca-cms.orglab.biz:8000/certs/d0cbc3f6bac0d0a1f79f786aa5543b01>;alg=ES256\",\n  \"date\": \"Fri, 14 May 2021 16:57:06 GMT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f47803c-c0ff-4640-96d1-2dab2bba7b7e",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitys-s"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"ApiKeyRequired\",\n  \"http_status_code\": 400,\n  \"sip_code\": 400,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"API key is required\",\n  \"developer_message\": \"API key is required\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b218768d-1fc1-4554-a21f-31c65350c538",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitys-s"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"SipInterfaceCidrInvalid\",\n  \"http_status_code\": 500,\n  \"sip_code\": 500,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"SIP interface cidr is invalid\",\n  \"developer_message\": \"SIP interface cidr is invalid\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c902195-52bc-4328-8e49-49cb4bd9c448",
+          "name": "Multipart - Text/JSON Message & Response in Text Format",
+          "request": {
+            "name": "Multipart - Text/JSON Message & Response in Text Format",
+            "description": {
+              "content": "This API entry point accepts multipart message as text/JSON messages as requests and produces responses in text format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authn",
+                "v2",
+                "identitymps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "ppt",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "attest",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "origid",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"date\": \"<string>\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"<string>\",\n  \"diversion\": \"<string>\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\",\n  \"rcd_hash_algorithm\": \"<string>\",\n  \"rcd_signature\": \"<string>\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<string>\",\n  \"dest_cc\": \"<string>\",\n  \"attest\": \"<string>\",\n  \"origid\": \"<string>\",\n  \"request_id\": \"<string>\",\n  \"priority\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "533a7ae9-aa7f-4217-a7e1-18fcd4b79bbf",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitymps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identity\": \"eyJhbGciOiJFUzI1NiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL2NhLWNtcy5uZXVzdGFybGFiLmJpejo4MDAwL2NlcnRzL2QwY2JjM2Y2YmFjMGQwYTFmNzlmNzg2YWE1NTQzYjAxIn0.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2MjEwMTE0MjYsIm9yaWciOnsidXJpIjoic2lwOmFsaWNlQGV4YW1wbGUuY29tIn19.RC99mmfDvD2BuMZnKwUBGBeG5NyjoQLign1Rjya6rJYv7LShPyDToL7hac1PnurB2kK3ojYVKg0TDMsIOj05RQ;info=<http://ca-cms.orglab.biz:8000/certs/d0cbc3f6bac0d0a1f79f786aa5543b01>;alg=ES256\",\n  \"date\": \"Fri, 14 May 2021 16:57:06 GMT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4834665a-4706-474f-a1c9-fcbe622bffc8",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitymps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"ApiKeyRequired\",\n  \"http_status_code\": 400,\n  \"sip_code\": 400,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"API key is required\",\n  \"developer_message\": \"API key is required\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "103976fc-9060-40ba-b922-1f53527afa11",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitymps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"SipInterfaceCidrInvalid\",\n  \"http_status_code\": 500,\n  \"sip_code\": 500,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"SIP interface cidr is invalid\",\n  \"developer_message\": \"SIP interface cidr is invalid\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b2a77ff-43df-496b-9cc2-96cc1ea81ce9",
+          "name": "Multipart - Text/JSON Message & Response in JSON Format",
+          "request": {
+            "name": "Multipart - Text/JSON Message & Response in JSON Format",
+            "description": {
+              "content": "This API entry point accepts multipart message as text/JSON messages as requests and produces responses in JSON format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authn",
+                "v2",
+                "identitympj"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "ppt",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "attest",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+                },
+                {
+                  "disabled": false,
+                  "key": "origid",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "compact",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<boolean>",
+                  "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"date\": \"<string>\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"<string>\",\n  \"diversion\": \"<string>\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\",\n  \"rcd_hash_algorithm\": \"<string>\",\n  \"rcd_signature\": \"<string>\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<string>\",\n  \"dest_cc\": \"<string>\",\n  \"attest\": \"<string>\",\n  \"origid\": \"<string>\",\n  \"request_id\": \"<string>\",\n  \"priority\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99f1acd5-0040-4641-94e3-9b2decbff19d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitympj"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"identity\": \"eyJhbGciOiJFUzI1NiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL2NhLWNtcy5uZXVzdGFybGFiLmJpejo4MDAwL2NlcnRzL2QwY2JjM2Y2YmFjMGQwYTFmNzlmNzg2YWE1NTQzYjAxIn0.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2MjEwMTE0MjYsIm9yaWciOnsidXJpIjoic2lwOmFsaWNlQGV4YW1wbGUuY29tIn19.RC99mmfDvD2BuMZnKwUBGBeG5NyjoQLign1Rjya6rJYv7LShPyDToL7hac1PnurB2kK3ojYVKg0TDMsIOj05RQ;info=<http://ca-cms.orglab.biz:8000/certs/d0cbc3f6bac0d0a1f79f786aa5543b01>;alg=ES256\",\n  \"date\": \"Fri, 14 May 2021 16:57:06 GMT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e102cf7-eebd-4217-8b81-6e05c524bf5c",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitympj"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"ApiKeyRequired\",\n  \"http_status_code\": 400,\n  \"sip_code\": 400,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"API key is required\",\n  \"developer_message\": \"API key is required\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bfd6bd3-1787-4ebc-a3f2-ff269b0a8bd5",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authn",
+                    "v2",
+                    "identitympj"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ppt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"date\": \"Fri, 11 Aug 2017 04:17:14 GMT\",\n  \"compact\": \"<boolean>\",\n  \"passport_type\": \"div\",\n  \"diversion\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"resource_priority\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true,\n  \"rcd_hash_algorithm\": \"sha384\",\n  \"rcd_signature\": \"sha512-oODCNbWggTlXfGx1wMpFhdA6Kt2vLjNsRnwks+ffezUUTubjGLSUhqLkSjsE3SZKPWG+gywfYmKjcPtz6uMyog==\",\n  \"pai\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB\"\n    },\n    {\n      \"algorithm\": \"SHA-256\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": \"1\",\n  \"dest_cc\": \"1\",\n  \"attest\": \"A\",\n  \"origid\": \"3F9C2836-7E40-11E7-BA58-7831C1B8DEBA\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"priority\": \"psap-callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_id\": \"SipInterfaceCidrInvalid\",\n  \"http_status_code\": 500,\n  \"sip_code\": 500,\n  \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n  \"reason\": \"SIP interface cidr is invalid\",\n  \"developer_message\": \"SIP interface cidr is invalid\",\n  \"attributes\": {\n    \"key\": \"value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f0dc3b0c-1411-4925-bf3f-94ae5c2c7691",
+      "name": "Verification Service",
+      "description": {
+        "content": "Currently, a RESTful API client is required to provide an 'apiKey' query parameter with a pre-provisioned value to access API calls that are restricted. If the 'apiKey' parameter is not specified, the client IP address may be used as the backup authentication mechanism if pre-provisioned.\n\nThree different API entry points are defined for SIP Identity header verification:\n  * Accepts requests in JSON format and produces responses in JSON format\n  * Accepts text messages and produces responses in JSON format\n  * Accepts text messages and produces responses in SIP format\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ead5f850-da4b-4bf9-904e-879331c5a0a8",
+          "name": "Request & Response in JSON Format",
+          "request": {
+            "name": "Request & Response in JSON Format",
+            "description": {
+              "content": "This API entry point accepts requests and produces responses in JSON Format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verify",
+                "v2",
+                "identityj-j"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. The verification status requirement"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnam",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+                },
+                {
+                  "disabled": false,
+                  "key": "robocall",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnamPrefix",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"date\": \"<string>\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<array>\",\n  \"dest_cc\": \"<string>\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1fa91f04-c12c-4225-84f0-99d3b1e30a29",
+              "name": "successful operation\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identityj-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"verstat\": \"TN-Validation-Passed\",\n  \"identity_info\": [\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    },\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    }\n  ],\n  \"cnam\": \"Alice In Wonderland\",\n  \"call_insight\": {\n    \"call_treatment\": \"allow\",\n    \"fraud_score\": 0,\n    \"original_calling_name\": \"Alice\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "330a3518-d0a5-4e40-90c8-2b29f4b95447",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identityj-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": [\n    {\n      \"attributes\": {\n        \"key\": \"value\"\n      },\n      \"error_id\": \"ApiKeyInvalid\",\n      \"http_status_code\": 400,\n      \"reason\": \"API key is invalid\",\n      \"sip_code\": 400,\n      \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\"\n    }\n  ],\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c17e704c-6ef9-49fb-bbac-3e8c759a4919",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identityj-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"error_id\": \"SipInterfaceCidrInvalid\",\n    \"http_status_code\": 500,\n    \"sip_code\": 500,\n    \"reason\": \"SIP interface cidr is invalid\",\n    \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n    \"attributes\": {\n      \"key\": \"value\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "653279d3-ddf9-4c3b-bccf-8111843f530e",
+          "name": "Text Message & Response in JSON Format",
+          "request": {
+            "name": "Text Message & Response in JSON Format",
+            "description": {
+              "content": "This API entry point accepts text messages with SIP Identity headers as requests and produces responses in JSON Format\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verify",
+                "v2",
+                "identitys-j"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. The verification status requirement"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnam",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+                },
+                {
+                  "disabled": false,
+                  "key": "robocall",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnamPrefix",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"date\": \"<string>\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<array>\",\n  \"dest_cc\": \"<string>\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "955cb2c9-0dc5-466d-b438-475f61c10da0",
+              "name": "successful operation\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identitys-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"verstat\": \"TN-Validation-Passed\",\n  \"identity_info\": [\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    },\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    }\n  ],\n  \"cnam\": \"Alice In Wonderland\",\n  \"call_insight\": {\n    \"call_treatment\": \"allow\",\n    \"fraud_score\": 0,\n    \"original_calling_name\": \"Alice\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45c0cdac-a5a2-4765-bc45-1eb407255118",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identitys-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": [\n    {\n      \"attributes\": {\n        \"key\": \"value\"\n      },\n      \"error_id\": \"ApiKeyInvalid\",\n      \"http_status_code\": 400,\n      \"reason\": \"API key is invalid\",\n      \"sip_code\": 400,\n      \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\"\n    }\n  ],\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff310a09-ee71-4c4c-8981-2f37eaeef940",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identitys-j"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"error_id\": \"SipInterfaceCidrInvalid\",\n    \"http_status_code\": 500,\n    \"sip_code\": 500,\n    \"reason\": \"SIP interface cidr is invalid\",\n    \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n    \"attributes\": {\n      \"key\": \"value\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35a0ff41-1f65-4d9e-9565-aa35bfca8d39",
+          "name": "Text Message & Response in Text Format",
+          "request": {
+            "name": "Text Message & Response in Text Format",
+            "description": {
+              "content": "This API entry point accepts text messages with SIP Identity headers as requests and produces responses in text format. If the API client prefers full SIP INVITE messages in the responses with SIP Identity headers embedded in, the following HTTP header needs be specified in the request:\n```\nAccept: text/plain\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verify",
+                "v2",
+                "identitys-s"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. The verification status requirement"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnam",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+                },
+                {
+                  "disabled": false,
+                  "key": "robocall",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnamPrefix",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"date\": \"<string>\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<array>\",\n  \"dest_cc\": \"<string>\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5822fe29-13cd-44ff-8de8-7a178175e0a8",
+              "name": "successful operation\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identitys-s"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"verstat\": \"TN-Validation-Passed\",\n  \"identity_info\": [\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    },\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    }\n  ],\n  \"cnam\": \"Alice In Wonderland\",\n  \"call_insight\": {\n    \"call_treatment\": \"allow\",\n    \"fraud_score\": 0,\n    \"original_calling_name\": \"Alice\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe90cc15-fd89-4a15-9d48-fbfd59c4ac9b",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identitys-s"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": [\n    {\n      \"attributes\": {\n        \"key\": \"value\"\n      },\n      \"error_id\": \"ApiKeyInvalid\",\n      \"http_status_code\": 400,\n      \"reason\": \"API key is invalid\",\n      \"sip_code\": 400,\n      \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\"\n    }\n  ],\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f99d63d2-e4cc-42d0-a7ff-398bb13d4ff3",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identitys-s"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"error_id\": \"SipInterfaceCidrInvalid\",\n    \"http_status_code\": 500,\n    \"sip_code\": 500,\n    \"reason\": \"SIP interface cidr is invalid\",\n    \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n    \"attributes\": {\n      \"key\": \"value\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d6449543-e6df-48fa-9e3f-ea5373ea0663",
+      "name": "Verification Service with Call Validation Treatment (CVT)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "500d23d9-0c14-441c-955c-f4029e00aad9",
+          "name": "Request & Response in JSON Format",
+          "request": {
+            "name": "Request & Response in JSON Format",
+            "description": {
+              "content": "This API entry point accepts requests and produces responses in JSON Format.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verify",
+                "v2",
+                "identityCVT"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. The verification status requirement"
+                },
+                {
+                  "disabled": false,
+                  "key": "origcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "destcc",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnam",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+                },
+                {
+                  "disabled": false,
+                  "key": "robocall",
+                  "value": "<boolean>",
+                  "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+                },
+                {
+                  "disabled": false,
+                  "key": "cnamPrefix",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "verstat",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+                },
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<string>",
+                  "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"date\": \"<string>\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"digest\": \"<string>\"\n    }\n  ],\n  \"orig_cc\": \"<array>\",\n  \"dest_cc\": \"<string>\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<string>\",\n  \"caller_reason\": \"<string>\",\n  \"alt_present_number\": \"<string>\",\n  \"caller_name\": \"<string>\",\n  \"jcard\": \"<string>\",\n  \"jcard_uri\": \"<string>\",\n  \"rcd_issuer\": \"<string>\",\n  \"rcd_integrity\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1514a85e-f18e-4b01-91e3-1d4cf920858e",
+              "name": "successful operation\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identityCVT"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"verstat\": \"TN-Validation-Passed\",\n  \"identity_info\": [\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    },\n    {\n      \"status\": \"Ok\",\n      \"params\": \"info=<http://ca.example.com/test.der>;alg=ES256;ppt=\\\"shaken\\\"\",\n      \"header\": {\n        \"alg\": \"ES256\",\n        \"ppt\": \"shaken\",\n        \"typ\": \"passport\",\n        \"x5u\": \"http://ca.example.com/test.der\"\n      },\n      \"claim\": {\n        \"attest\": \"A\",\n        \"dest\": {\n          \"tn\": [\n            \"15715550001\"\n          ]\n        },\n        \"iat\": 1618541811,\n        \"mky\": [\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          },\n          {\n            \"alg\": \"SHA-1\",\n            \"dig\": \"4AADB9B13F82183B540212DF3E5D496B19E57CAB\"\n          }\n        ],\n        \"orig\": {\n          \"tn\": \"17035550001\"\n        },\n        \"origid\": \"123456-ABCD-999999\"\n      },\n      \"certificate_info\": {\n        \"subject\": \"C=US, ST=VA, L=Somewhere, O=\\\"AcmeTelecom, Inc.\\\", OU=VOIP, CN=TEST-EC-256-EXT-TN-JWT\",\n        \"issuer\": \"C=US, O=Organization IOT Lab, CN=CallAuthnCA\",\n        \"tn_auth_list\": [\n          {\n            \"spc\": \"X001\"\n          },\n          {\n            \"spc\": \"X001\"\n          }\n        ]\n      }\n    }\n  ],\n  \"cnam\": \"Alice In Wonderland\",\n  \"call_insight\": {\n    \"call_treatment\": \"allow\",\n    \"fraud_score\": 0,\n    \"original_calling_name\": \"Alice\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "665cb926-2d03-4060-8bd7-641e9e28f081",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identityCVT"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": [\n    {\n      \"attributes\": {\n        \"key\": \"value\"\n      },\n      \"error_id\": \"ApiKeyInvalid\",\n      \"http_status_code\": 400,\n      \"reason\": \"API key is invalid\",\n      \"sip_code\": 400,\n      \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\"\n    }\n  ],\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "605f3a17-9c69-43c9-b9bc-29eb9b1f739d",
+              "name": "Error Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify",
+                    "v2",
+                    "identityCVT"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "destcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnam",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "robocall",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cnamPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verstat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"Alice <sip:alice@example.com>\",\n  \"to\": \"Bob <sip:5715550000@example.com>\",\n  \"identity\": \"<array>\",\n  \"diversion\": \"<array>\",\n  \"resource_priority\": \"<array>\",\n  \"verstat\": \"<boolean>\",\n  \"identity_info\": \"<boolean>\",\n  \"request_id\": \"X-REQUEST-ID-12345\",\n  \"status\": \"Bob <sip:7035550000@example.com>;reason=away\",\n  \"date\": \"Fri, 16 Apr 2021 02:56:51 GMT\",\n  \"pai\": \"<array>\",\n  \"finger_print\": [\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    },\n    {\n      \"algorithm\": \"SHA-1\",\n      \"digest\": \"36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7\"\n    }\n  ],\n  \"orig_cc\": [\n    \"1\",\n    \"44\"\n  ],\n  \"dest_cc\": \"1\",\n  \"cnam\": \"<boolean>\",\n  \"robocall\": \"<boolean>\",\n  \"call_info\": \"<http://example.com/alice.json>;purpose=jcard;call-reason=Travel\",\n  \"caller_reason\": \"Travel\",\n  \"alt_present_number\": \"Disney <sip:+18005550000@example.com>\",\n  \"caller_name\": \"Alice Liddell\",\n  \"jcard\": \"[\\\"vcard\\\",[[\\\"version\\\",{},\\\"text\\\",\\\"4.0\\\"],[\\\"fn\\\",{},\\\"text\\\",\\\"Alice Liddell\\\"],[ \\\"email\\\",{},\\\"text\\\",\\\"alice@example.com\\\"]]]\",\n  \"jcard_uri\": \"cid:123456\",\n  \"rcd_issuer\": \"Disney, Inc.\",\n  \"rcd_integrity\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"error_id\": \"SipInterfaceCidrInvalid\",\n    \"http_status_code\": 500,\n    \"sip_code\": 500,\n    \"reason\": \"SIP interface cidr is invalid\",\n    \"timestamp\": \"Fri, 14 May 2021 16:57:02 GMT\",\n    \"attributes\": {\n      \"key\": \"value\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}:{{port}}/{{optionalRoutingPath}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "90176101-90f7-493a-b490-91c2007608ba",
+    "name": "STIR/SHAKEN Authentication & Verification Service APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Overview\n  Secure Telephone Identity Revisited (STIR) and the Signature-based Handling of Asserted information using toKENs (SHAKEN) framework have already become regulatory mandates in both the United States and Canada for caller identity authentication.  These IETF and ATIS standards define how to securely compute, transit and verify SIP Identity headers through an Authentication Service (AS) and Verification Service (VS).\n\n  Since their initial implementation, STIR and SHAKEN standards have been (and continue to be) extended in multiple ways.  Additionally, the AS and VS can support supplemental features including, but not limited to telephone number ownership validation, subscriber-based policy management and robocall analytics.\n  \n  The AS and VS implement call authentication and related functions ideally through flexible, extensible, robust and standardized Application Program Interfaces (APIs).  Many initial implementations of the SHAKEN framework employ RESTful API clients, but these are constrained to only supporting base functionality.  The STIR/SHAKEN API project promotes collaboration to expand functionality, while hopefully also achieving industry alignment amongst various RESTful API implementations and/or applicable standards, where possible.\n\n  There are generally two ways to authenticate a RESTful API client - 'apiKey' or 'coming from a whitelisted client IP'.  Both are initially supported in the STIR/SHAKEN API project.  If a RESTful API client chooses to use 'apiKey' for authentication, an 'apiKey' query parameter, with a pre-provisioned value, is validated to access API calls that are restricted. If the 'apiKey' parameter is not specified, a pre-provisioned client IP address may be used as the backup authentication mechanism.  The server first checks for availability of an 'apiKey' in the query parameter and if it doesn't find one, it tries to authenticate via the client IP address.\n\n  The primary objective of the STIR/SHAKEN API project is to foster broad and open industry collaboration amongst developers and implementers of (or those desiring to implement) RESTful APIs for timely and extensible support of evolving caller identity authentication standards, including supplemental feature support as required.  The core set of ATIS SHAKEN standards supported in this project, including their underlying and/or referenced IETF and 3GPP standards, are:\n  * ATIS-1000074, “SHAKEN”\n  * ATIS-1000078, “National Security / Emergency Preparedness Priority Service SIP RPH Signing and Verification using PASSporTs”\n  * ATIS-1000080, “SHAKEN: Governance Model and Certificate Management”\n  * ATIS-1000084, “Operational and Management Considerations for SHAKEN STI Certification Authorities and Policy Administrators”\n  * ATIS-1000085, “SHAKEN: SHAKEN Support of “div” PASSporT”\n  * ATIS-1000092, “SHAKEN: Delegate Certificates\n  * ATIS-1000093, “Toll-Free Numbers in the SHAKEN Framework”\n  * ATIS-1000094, “SHAKEN: Calling Name and Rich Call Data Handling Procedures”\n  * ATIS-1000098, “SIP Resource-Priority Header and Priority Header Signing in Support of Emergency Calling”\n\nLooking forward to your support, feedback and contributions.\n",
+      "type": "text/plain"
+    }
+  }
+}

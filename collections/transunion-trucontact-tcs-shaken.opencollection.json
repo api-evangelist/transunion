@@ -1,0 +1,673 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "STIR/SHAKEN Authentication & Verification Service APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request & Response in JSON Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/authn/v2/identityj-j",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "ppt",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+              },
+              {
+                "name": "attest",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+              },
+              {
+                "name": "origid",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts requests and produces responses in JSON Format.\n"
+        },
+        {
+          "info": {
+            "name": "Text Message & Response in JSON Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/authn/v2/identitys-j",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "ppt",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+              },
+              {
+                "name": "attest",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+              },
+              {
+                "name": "origid",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts text messages as requests and produces responses in JSON Format.\n"
+        },
+        {
+          "info": {
+            "name": "Text Message & Response in Text Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/authn/v2/identitys-s",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "ppt",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+              },
+              {
+                "name": "attest",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+              },
+              {
+                "name": "origid",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts text messages as requests and produces responses in text format. If the API client prefers full SIP INVITE messages in the responses with SIP Identity headers embedded in, the following HTTP header needs be specified in the request:\n```\nAccept: text/plain\n```\n"
+        },
+        {
+          "info": {
+            "name": "Multipart - Text/JSON Message & Response in Text Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/authn/v2/identitymps",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "ppt",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+              },
+              {
+                "name": "attest",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+              },
+              {
+                "name": "origid",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts multipart message as text/JSON messages as requests and produces responses in text format.\n"
+        },
+        {
+          "info": {
+            "name": "Multipart - Text/JSON Message & Response in JSON Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/authn/v2/identitympj",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "ppt",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. PASSporT type value. If specified, must be 'shaken', 'div', 'rcd' or 'rph'. If not specified, default ppt=shaken by authentication server"
+              },
+              {
+                "name": "attest",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Attestation indicator claim value.'attest' value specified by ATIS-1000074.v002. If specified, must be a either \"A\", \"B\" or \"C\". If not specified, default attest=A by authentication server"
+              },
+              {
+                "name": "origid",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Origination identifier claim value. 'origid' value specified by ATIS-1000074.v002. If specified, should be a unique string corresponding to a UUID (RFC 4122). If not specified, authentication server would add a UUID."
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for compact SIP Identity header, ignored for 'shaken' PASSporT type. If specified, must be true or false"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the originator telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Default country code for the destination telephone number. If specified, must be a valid country code"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Verstat value as defined in ETSI TS 124 299, for performing tagging and the SIP Identity header optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable when SIP INVITE message is included in the request body. Flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\". If specified, must be true or false"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts multipart message as text/JSON messages as requests and produces responses in JSON format.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Verification Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request & Response in JSON Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/verify/v2/identityj-j",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. The verification status requirement"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+              },
+              {
+                "name": "cnam",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+              },
+              {
+                "name": "robocall",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+              },
+              {
+                "name": "cnamPrefix",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts requests and produces responses in JSON Format.\n"
+        },
+        {
+          "info": {
+            "name": "Text Message & Response in JSON Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/verify/v2/identitys-j",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. The verification status requirement"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+              },
+              {
+                "name": "cnam",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+              },
+              {
+                "name": "robocall",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+              },
+              {
+                "name": "cnamPrefix",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts text messages with SIP Identity headers as requests and produces responses in JSON Format\n"
+        },
+        {
+          "info": {
+            "name": "Text Message & Response in Text Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/verify/v2/identitys-s",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. The verification status requirement"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+              },
+              {
+                "name": "cnam",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+              },
+              {
+                "name": "robocall",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+              },
+              {
+                "name": "cnamPrefix",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts text messages with SIP Identity headers as requests and produces responses in text format. If the API client prefers full SIP INVITE messages in the responses with SIP Identity headers embedded in, the following HTTP header needs be specified in the request:\n```\nAccept: text/plain\n```\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Verification Service with Call Validation Treatment (CVT)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request & Response in JSON Format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}:{port}/{optionalRoutingPath}/verify/v2/identityCVT",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Required, if client chooses to authenticate via apiKey. Not required, if client chooses to authenticate via pre-provisioned client IP"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. The verification status requirement"
+              },
+              {
+                "name": "origcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country codes for the originator telephone number"
+              },
+              {
+                "name": "destcc",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Default country code for the destination telephone number"
+              },
+              {
+                "name": "cnam",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for performing CNAM lookup"
+              },
+              {
+                "name": "robocall",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Flag for returning Robocall Call Insight data"
+              },
+              {
+                "name": "cnamPrefix",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Prefix applied to to CNAM data field, indicating if SIP Identity header is verified or not"
+              },
+              {
+                "name": "verstat",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Verstat value as defined in ETSI TS 124 299, for performing tagging and SIP Identity headers optionally removed"
+              },
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable for SIP INVITE message. Boolean flag for including SIP Identity header when the \"verstat\" parameter is specified, with the default value as \"true\""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API entry point accepts requests and produces responses in JSON Format.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

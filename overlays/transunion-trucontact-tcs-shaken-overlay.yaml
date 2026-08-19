@@ -1,0 +1,65 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for TransUnion TruContact Trusted Call Solutions (STI-AS / STI-VS)
+  version: 1.0.0
+extends: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+x-apievangelist:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+  note: >-
+    Captures API Evangelist's enhancements without mutating the harvested spec. The two
+    substantive additions are (1) the securitySchemes block the spec omits — the API is
+    authenticated by an apiKey query parameter that is declared only as an ordinary
+    parameter, so no tool can see it as auth; and (2) provenance/ownership metadata
+    recording that this Neustar-branded contract is TransUnion's TruContact business.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: TransUnion
+      x-apievangelist-product: TruContact Trusted Call Solutions
+      x-apievangelist-source: https://github.com/neustar/tcs-apis (branch gh-pages, oas-spec.yaml)
+      x-apievangelist-docs: https://neustar.github.io/tcs-apis/
+      x-apievangelist-ownership-note: >-
+        Published under the Neustar brand and logo. Neustar's Communications Solutions
+        business became TransUnion TruContact after TransUnion's $3.1B acquisition of
+        Neustar closed in December 2021; Trusted Call Solutions is marketed today at
+        transunion.com/solution/trucontact/branded-communications/trusted-call-solutions.
+      x-apievangelist-deployment: >-
+        Templated servers[] block is correct, not a defect — the STI-AS/STI-VS is deployed
+        inside each carrier's own network, so there is no TransUnion-hosted base URL.
+  - target: $.info
+    update:
+      contact:
+        name: TransUnion TruContact Trusted Call Solutions
+        url: https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
+      license:
+        name: MIT
+        url: https://github.com/neustar/tcs-apis/blob/main/LICENSE
+  - target: $.components
+    update:
+      securitySchemes:
+        apiKeyQuery:
+          type: apiKey
+          in: query
+          name: apiKey
+          description: >-
+            ADDED BY API EVANGELIST — not present in the published spec. info.description
+            states the apiKey query parameter carries a pre-provisioned value and is
+            validated on restricted calls, but no securityScheme was declared, so the nine
+            operations read as unauthenticated to every generator, gateway and scanner.
+  - target: $.paths['/authn/v2/identityj-j'].post
+    update:
+      x-apievangelist-review:
+        declared_responses: [200, 4xx, 5xx]
+        observed_in_examples: [400, 403, 406, 415, 500, 503]
+        gap: >-
+          Wildcard response codes hide the concrete failure statuses. The 179 error_ids
+          extracted to errors/transunion-problem-types.yml exist only inside examples.
+  - target: $.paths['/verify/v2/identityCVT'].post
+    update:
+      x-apievangelist-review:
+        note: >-
+          The only operation returning Call Validation Treatment (CNAM + robocall
+          analytics) alongside the verification verdict — the commercially distinctive
+          endpoint of the surface.

@@ -1,0 +1,67 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+docs: https://neustar.github.io/tcs-apis/
+note: >-
+  derive-authentication.py returned zero profiles for this provider because the
+  published TruContact TCS spec declares NO components.securitySchemes at all —
+  authentication is described in prose in info.description and carried as an ordinary
+  `apiKey` QUERY parameter on all nine operations. That is the finding, and it is a
+  real weakness: a machine reading the contract cannot tell that these endpoints are
+  authenticated. Everything below is read verbatim out of the spec.
+summary:
+  types: [apiKey, ip-allowlist, mutualTLS]
+  api_key_in: [query]
+  oauth2_flows: []
+  declared_as_security_scheme: false
+schemes:
+  - name: apiKey
+    type: apiKey
+    in: query
+    parameter: apiKey
+    required: false
+    declared_in_spec_as: parameter
+    sources: [openapi/transunion-trucontact-tcs-shaken-openapi.yml]
+    applies_to:
+      - authn/identityj-j
+      - authn/identitys-j
+      - authn/identitys-s
+      - authn/identitymps
+      - authn/identitympj
+      - verify/identityj-j
+      - verify/identitys-j
+      - verify/identitys-s
+      - verify/identitycvt
+    description: >-
+      "If a RESTful API client chooses to use 'apiKey' for authentication, an 'apiKey'
+      query parameter, with a pre-provisioned value, is validated to access API calls
+      that are restricted." (info.description, verbatim)
+  - name: client-ip-allowlist
+    type: ip-allowlist
+    sources: [openapi/transunion-trucontact-tcs-shaken-openapi.yml]
+    description: >-
+      "If the 'apiKey' parameter is not specified, a pre-provisioned client IP address
+      may be used as the backup authentication mechanism. The server first checks for
+      availability of an 'apiKey' in the query parameter and if it doesn't find one, it
+      tries to authenticate via the client IP address." (info.description, verbatim)
+  - name: mutual-tls
+    type: mutualTLS
+    sources: [probe]
+    scope: api.iovation.com (TruValidate Device Risk)
+    method: probed
+    evidence: >-
+      GET https://api.iovation.com/ returned HTTP 403 with body
+      "Unauthorized - missing/invalid client certificate" on 2026-08-13.
+    description: >-
+      The TruValidate Device Risk API host requires a client certificate. This is not
+      described in any published OpenAPI — it was observed on the wire.
+weaknesses:
+  - id: apikey-in-query
+    detail: >-
+      The API key travels as a URL query parameter, so it lands in proxy logs, browser
+      history and Referer headers. A header-borne key would be the RFC-friendly form.
+  - id: no-securityschemes
+    detail: >-
+      components.securitySchemes is absent and no operation carries a security[]
+      requirement, so automated clients, gateways and scanners see nine unauthenticated
+      POST endpoints. The auth model exists only in prose.

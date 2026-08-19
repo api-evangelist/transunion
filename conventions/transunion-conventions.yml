@@ -1,0 +1,86 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+docs: https://neustar.github.io/tcs-apis/
+note: >-
+  Cross-cutting semantics for the one TransUnion API surface with a public
+  machine-readable contract: TruContact Trusted Call Solutions (STI-AS / STI-VS).
+  Every line below is read from the spec. NO Idempotency pointer is emitted in
+  apis.yml because the provider documents no idempotency contract — see
+  idempotency.supported: false.
+authentication:
+  style: api-key-in-query, with client-IP allowlist as fallback
+  parameter: apiKey
+  location: query
+  declared_as_security_scheme: false
+  detail: see authentication/transunion-authentication.yml
+content_negotiation:
+  note: >-
+    This API's most distinctive convention: the request and response media types are
+    encoded in the OPERATION NAME rather than negotiated by header. The suffix reads
+    <request-format>-<response-format>.
+  operations:
+    - {operation: authn/identityj-j, request: application/json, response: application/json}
+    - {operation: authn/identitys-j, request: text/plain, response: application/json}
+    - {operation: authn/identitys-s, request: text/plain, response: text/plain}
+    - {operation: authn/identitymps, request: multipart (text/JSON), response: text/plain}
+    - {operation: authn/identitympj, request: multipart (text/JSON), response: application/json}
+    - {operation: verify/identityj-j, request: application/json, response: application/json}
+    - {operation: verify/identitys-j, request: text/plain, response: application/json}
+    - {operation: verify/identitys-s, request: text/plain, response: text/plain}
+    - {operation: verify/identitycvt, request: application/json, response: application/json}
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    No Idempotency-Key parameter, header or retry contract appears anywhere in either
+    published spec. The operations are semantically pure-ish (signing a PASSporT for the
+    same call twice produces another signed token rather than a duplicate side effect),
+    but the provider makes no idempotency promise, so none is recorded.
+pagination:
+  supported: false
+  detail: nine single-shot POST operations; there are no collection endpoints.
+versioning:
+  scheme: uri-path
+  current: v2
+  detail: >-
+    Every path is prefixed /authn/v2/... or /verify/v2/.... info.version is 1.0.0 and
+    tracks the specification document, not the deployed service — those two numbers do
+    not agree, which is worth knowing before pinning to either.
+  companion_spec_version: '1.0, TS 24.229, Release 17.10.0'
+error_envelope:
+  format: vendor-json
+  shape: '{error_id, http_status_code, sip_code, timestamp, reason, developer_message?, attributes?}'
+  verification_variant: '{status: "error", error: [ ... ]} — an ARRAY of the above'
+  rfc9457: false
+  detail: see errors/transunion-problem-types.yml (179 error_ids)
+declared_status_codes:
+  detail: >-
+    Responses are declared as the wildcards 200 / 4xx / 5xx only. A generated client sees
+    three outcomes; the real service returns at least 400, 403, 406, 415, 500 and 503,
+    visible only inside the response examples. This is the single biggest contract-quality
+    gap in the spec.
+rate_limiting:
+  documented: false
+  headers: []
+  detail: >-
+    No X-RateLimit-*/RateLimit-* headers, no 429 response, and no limits in the prose —
+    see rate-limits/transunion-rate-limits.yml.
+request_tracing:
+  request_id_header: null
+  detail: >-
+    No correlation/request-id header is documented. The error object's timestamp field is
+    the only trace anchor the contract offers.
+deployment_model:
+  servers: 'https://{hostname}:{port}/{optionalRoutingPath}'
+  detail: >-
+    The server block is fully templated because TCS AS/VS is deployed per carrier — the
+    hostname is the operator's own STI-AS/STI-VS instance, not a TransUnion multi-tenant
+    endpoint. This is why no fixed baseURL exists for the API and why the spec, not a
+    hosted host, is the artifact.
+cross_links:
+  errors: errors/transunion-problem-types.yml
+  authentication: authentication/transunion-authentication.yml
+  lifecycle: lifecycle/transunion-lifecycle.yml
+  rate_limits: rate-limits/transunion-rate-limits.yml
+  conformance: conformance/transunion-conformance.yml

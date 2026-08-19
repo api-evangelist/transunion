@@ -1,0 +1,65 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of /.well-known/* on every host named in apis.yml and the OpenAPI servers[]
+result: no-documents
+note: >-
+  NOTHING WAS SERVED, so no WellKnown or SecurityTxt pointer is emitted. Two
+  distinct walls were hit and they mean different things. (1) developer.transunion.com
+  — the humanURL/baseURL this repo has carried since 2026-05 — no longer resolves at
+  all (NXDOMAIN), so every probe against it failed at DNS, not HTTP. (2) The
+  transunion.com estate sits behind Cloudflare bot management, which answers 403
+  "Attention Required! | Cloudflare" to every non-browser client, including
+  /robots.txt. A 403 here is our wall, not a recorded provider absence: we cannot
+  say TransUnion does not serve a security.txt, only that we were not allowed to ask.
+hosts:
+  - host: developer.transunion.com
+    reachable: false
+    dns: NXDOMAIN
+    documents:
+      - {path: /.well-known/security.txt, status: 0, error: dns-nxdomain}
+      - {path: /.well-known/agent-card.json, status: 0, error: dns-nxdomain}
+      - {path: /.well-known/agent.json, status: 0, error: dns-nxdomain}
+      - {path: /.well-known/api-catalog, status: 0, error: dns-nxdomain}
+      - {path: /.well-known/openid-configuration, status: 0, error: dns-nxdomain}
+      - {path: /.well-known/oauth-authorization-server, status: 0, error: dns-nxdomain}
+      - {path: /.well-known/ai-plugin.json, status: 0, error: dns-nxdomain}
+  - host: www.transunion.com
+    reachable: true
+    edge: cloudflare-bot-management
+    documents:
+      - {path: /.well-known/security.txt, status: 403, note: cloudflare challenge page, not a document}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/ai-plugin.json, status: 403}
+      - {path: /robots.txt, status: 403}
+  - host: api.transunion.com
+    reachable: true
+    edge: cloudflare-bot-management
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+  - host: api.iovation.com
+    reachable: true
+    note: >-
+      TruValidate Device Risk API host. Answers 403 with the plain-text body
+      "Unauthorized - missing/invalid client certificate" — the whole host is behind
+      mutual TLS, so no anonymous discovery surface exists by design.
+    documents:
+      - {path: /, status: 403, body: "Unauthorized - missing/invalid client certificate"}
+  - host: neustar.github.io
+    reachable: true
+    note: >-
+      GitHub Pages host for the published TruContact TCS API docs. The /.well-known/
+      namespace is GitHub's, not TransUnion's, so a hit here would not be a provider
+      assertion anyway.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}

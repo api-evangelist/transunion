@@ -1,0 +1,29 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://www.transunion.com/business (403 to non-browser clients),
+  https://neustar.github.io/tcs-apis/ (200, no pricing),
+  https://apimarketplace.transunioncibil.com/ (403)
+plan_count: 0
+note: >-
+  TransUnion publishes no self-serve plans, no price list and no rate card for any of its
+  API products. Every surface is contract-first: the TruContact TCS API is deployed inside
+  a carrier's own network under a commercial agreement, TruValidate and credit APIs require
+  a business agreement and a Key Account Manager, and the regional CIBIL API Marketplace
+  states that credentials are issued by a KAM after a signed integration. This is a
+  deliberate enterprise posture, not a missing page — plan_count is 0 because there is
+  genuinely nothing published, and that is the finding.
+plans: []
+access_model:
+  pricing: contract
+  onboarding: sales-gate
+  self_serve: false
+  trial: false
+  detail: >-
+    Access requires a business agreement with TransUnion; the developer portal that used to
+    front this (developer.transunion.com) no longer resolves.
+evidence:
+  - {url: 'https://neustar.github.io/tcs-apis/', status: 200, finding: published API docs with no pricing or plans section}
+  - {url: 'https://www.transunion.com/business', status: 403, finding: Cloudflare bot management blocks non-browser clients}
+  - {url: 'https://apimarketplace.transunioncibil.com/', status: 403, finding: regional API marketplace, blocked to non-browser clients}
+  - {url: 'https://transunion.readme.io/', status: 401, finding: credentialed docs portal — access requires a login}

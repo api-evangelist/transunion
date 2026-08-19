@@ -1,0 +1,73 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+note: >-
+  Derived from components.schemas and the request/response bodies of the nine published
+  operations. This is a signing/verification service, not a CRUD resource API — there are
+  no persisted entities with ids, so the "model" is the message graph: what goes into a
+  signing request, what comes back, and what a verification returns.
+entities:
+  - name: SigningRequest
+    role: request
+    detail: >-
+      Body of the five /authn/v2/* operations. Carries the attestation level and the call
+      identifiers from which the PASSporT is minted.
+    key_fields:
+      - {field: attest, meaning: 'SHAKEN attestation level A / B / C'}
+      - {field: origid, meaning: origination identifier (UUID) the originating provider assigns to the call}
+      - {field: orig.tn, meaning: originating telephone number}
+      - {field: dest.tn, meaning: destination telephone number(s)}
+      - {field: iat, meaning: issued-at timestamp of the PASSporT}
+  - name: Identity
+    schema: Identity
+    role: response
+    detail: The signed SIP Identity header (a PASSporT JWT plus its info/alg/ppt parameters).
+  - name: SuccessResponse
+    schema: SuccessResponse
+    role: response
+    detail: Authentication Service success envelope wrapping the Identity header.
+  - name: VerifyIdentity
+    schema: VerifyIdentity
+    role: request
+    detail: >-
+      Body of the /verify/v2/* operations — one or more Identity headers to validate,
+      together with the observed call parameters to check them against.
+  - name: VerifyResponse
+    schema: VerifyResponse
+    role: response
+    detail: >-
+      Verification outcome. On the CVT operation it additionally carries Call Validation
+      Treatment: CNAM (calling name) and robocall analytics.
+  - name: ErrorResponse400
+    schema: ErrorResponse400
+    role: error
+  - name: ErrorResponse500
+    schema: ErrorResponse500
+    role: error
+  - name: ErrorResponseCerts400
+    schema: ErrorResponseCerts400
+    role: error
+    detail: Certificate-specific failures (keystore, fetch, expiry, TNAuthList).
+  - name: VerifyErrorResponse
+    schema: VerifyErrorResponse
+    role: error
+    detail: >-
+      Structurally different from the others — wraps an ARRAY of error objects under
+      `error`, because a single verification can fail on several Identity headers at once.
+relationships:
+  - {from: SuccessResponse, to: Identity, type: has_one, via: identity}
+  - {from: VerifyIdentity, to: Identity, type: has_many, via: identity}
+  - {from: VerifyErrorResponse, to: ErrorResponse400, type: has_many, via: error}
+external_entities:
+  - name: STI Certificate
+    detail: >-
+      Not a schema in this spec, but the object more than a third of the 179 error_ids are
+      about (CertificateExpired, CertificateNotFound, CertificateNotValidForOrig,
+      CredentialKeyStoreError, TNAuthList fetch failures). It is fetched from a URL carried
+      in the PASSporT's `x5u` and issued under the ATIS-1000080 governance model, so it
+      lives outside the API but dominates its failure surface.
+  - name: TNAuthList
+    detail: >-
+      The certificate extension listing the telephone numbers/SPCs a credential is
+      authorised to sign for. Referenced by the CertificateTnAuthnListFetchError class.
+render: null

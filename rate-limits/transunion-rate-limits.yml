@@ -1,0 +1,21 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  openapi/transunion-trucontact-tcs-shaken-openapi.yml;
+  https://neustar.github.io/tcs-apis/ (200, read 2026-08-13)
+limit_count: 0
+note: >-
+  No rate limits are published. Read the full TruContact TCS spec — all nine operations,
+  every parameter, both error schemas and all 179 example error_ids — and there is no 429
+  response, no X-RateLimit-*/RateLimit-* header, no Retry-After, and no throttling language
+  in info.description or the tag copy. This is consistent with the deployment model: the
+  AS/VS runs inside the carrier's own network against a per-carrier capacity agreement, so
+  throttling is a contract term rather than a runtime signal. An agent calling this API has
+  no way to learn its budget from the contract, which is the finding.
+limits: []
+response_headers: []
+exhaustion_status: null
+evidence:
+  - {url: 'https://neustar.github.io/tcs-apis/', status: 200, finding: no rate-limit section in the published documentation}
+  - {source: openapi/transunion-trucontact-tcs-shaken-openapi.yml, finding: 'responses declared as 200 / 4xx / 5xx only; no 429, no rate-limit headers in any response'}
+  - {source: errors/transunion-problem-types.yml, finding: '179 error_ids extracted, none of them a throttling or quota class'}

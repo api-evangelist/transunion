@@ -1,0 +1,106 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  GitHub releases (github.com/iovation), registry.npmjs.org, api.nuget.org,
+  packagist.org, pypi.org — probed 2026-08-13
+note: >-
+  TransUnion publishes no client library for its credit / TruValidate decisioning
+  REST APIs (those are delivered under contract through techservices.transunion.com
+  and the gated developer portal). The first-party libraries that ARE public are
+  the TruValidate Device Risk mobile SDKs, shipped from the github.com/iovation org
+  — iovation was acquired by TransUnion in 2018 and its device products were
+  rebranded TruValidate, which the SDK READMEs state explicitly ("We have united
+  these solutions under the TransUnion TruValidate brand"). The Trustev clients are
+  the same acquisition pattern one generation earlier (TransUnion acquired Trustev
+  in 2017) and are now dormant.
+packages:
+  - language: swift-objc
+    registry: github
+    name: TruValidate Device Risk SDK for iOS (FraudForce.xcframework)
+    url: https://github.com/iovation/deviceprint-SDK-iOS
+    install: >-
+      Download the release archive and drag FraudForce.xcframework into the Xcode
+      project (no package-manager distribution published)
+    official: true
+    version: v5.9.0
+    published: '2026-08-07'
+    note: >-
+      Distributed as a binary xcframework via GitHub releases only — no CocoaPods,
+      Carthage or Swift Package Manager manifest in the repo, so there is no registry
+      metadata endpoint to query. Version read from the GitHub release tag.
+  - language: java-android
+    registry: github
+    name: TruValidate Device Risk SDK for Android (fraudforce-lib-release.aar)
+    url: https://github.com/iovation/deviceprint-SDK-Android
+    install: >-
+      Download iovation-android-sdk-<version>.zip and add fraudforce-lib-release-<version>.aar
+      to the app module's libs/ directory (flatDir repository) — not published to Maven Central
+    official: true
+    version: v5.4.0
+    published: '2026-07-24'
+    note: >-
+      AAR distributed through GitHub releases; Maven Central search returns no
+      fraudforce/iovation coordinate, so version: read from the GitHub release tag
+      and confirmed against the filename in the repo README.
+  - language: dotnet
+    registry: nuget
+    name: Trustev
+    url: https://www.nuget.org/packages/Trustev/
+    install: dotnet add package Trustev
+    official: true
+    version: 1.1.2
+    published: '2020-06-12'
+    note: >-
+      Published by author "Trustev" (TransUnion acquired Trustev in 2017). Last
+      release 2020-06-12 — six years stale; treat as legacy/abandoned.
+  - language: php
+    registry: packagist
+    name: trustev/phpclientapi
+    url: https://packagist.org/packages/trustev/phpclientapi
+    install: composer require trustev/phpclientapi
+    official: true
+    version: v0.3
+    published: '2016-11-03'
+    note: Last release 2016 — abandoned. Source repo github.com/Trustev/phpclientapi.
+  - language: java
+    registry: github
+    name: Trustev/javaclientapi
+    url: https://github.com/Trustev/javaclientapi
+    install: build from source — no Maven Central coordinate found
+    official: true
+    version: null
+    published: null
+    note: >-
+      Checked Maven Central and found no published artifact; repository last touched
+      2021-08-20. version/published are null because there is nothing to read, not
+      because the check was skipped.
+  - language: javascript
+    registry: npm
+    name: "@transunion-ui/tablejs"
+    url: https://www.npmjs.com/package/@transunion-ui/tablejs
+    install: npm install @transunion-ui/tablejs
+    official: true
+    kind: ui-component
+    version: 2.2.30
+    published: '2024-05-20'
+    note: >-
+      A UI table component published under TransUnion's own npm scope, NOT an API
+      client — it does not call any TransUnion API and is excluded from the SDK count.
+      Its stated source repo (github.com/transunion-ui/tablejs) now returns 404.
+sdk_count: 4
+excluded:
+  - name: react-native-iovation
+    registry: npm
+    reason: third-party community wrapper, not published by TransUnion/iovation
+  - name: transunion
+    registry: pypi
+    reason: third-party (author "Hang Xu"), single 0.1.0 release from 2017-03-15
+  - name: "@rkingon/transunion-tuna-node"
+    registry: npm
+    reason: third-party wrapper of the TransUnion TUNA API
+  - name: kpi-ui-webcomp-ds-2
+    registry: npm
+    reason: >-
+      describes itself as "Transunion Design System using WebComponents" but is
+      published by a personal npm account with no repository field — first-party
+      ownership could not be verified

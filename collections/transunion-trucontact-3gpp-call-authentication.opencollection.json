@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "3GPP-based Call Authentication APIs",
+    "version": "1.0, TS 24.229, Release 17.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "signing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Signing (STI-AS) Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/stir/v1/signing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signing (STI-AS) Request"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verification (STI-VS) Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/stir/v1/verification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verification (STI-VS) Request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

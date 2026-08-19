@@ -1,0 +1,821 @@
+{
+  "item": [
+    {
+      "id": "9197e233-80cd-4906-b41e-806c0b953014",
+      "name": "signing",
+      "description": {
+        "content": "Used to construct a PASSporT \"shaken\" JSON Web Token, a PASSporT \"div\" JSON Web Token or a PASSporT \"rph\" JSON Web Token.  Also, referred to as the Secure Telephone Identity Authentication Service (STI-AS).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e9c4ab69-cffd-46bc-bcc2-86f4018fce0f",
+          "name": "Signing (STI-AS) Request",
+          "request": {
+            "name": "Signing (STI-AS) Request",
+            "description": {},
+            "url": {
+              "path": [
+                "signing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"uri\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"iat\": \"<integer>\",\n    \"orig\": {\n      \"tn\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"ppt\": \"<string>\",\n    \"attest\": \"<string>\",\n    \"origid\": \"<string>\",\n    \"rph\": {\n      \"auth\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"sph\": \"<string>\",\n    \"div\": {\n      \"tn\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"hi\": \"<string>\"\n    },\n    \"profileId\": \"<string>\",\n    \"requestId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "636c6cf6-3089-4e98-8998-1710d8db4a2e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"requestId\": \"12378\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7f76ae6-9229-4d2a-90e7-e638a7f3657f",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing Request body\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2b54c57-b0ce-498d-94a1-deafbadd9a24",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Requested resource not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "568614d7-1418-4c8c-ae81-1f5c814df69b",
+              "name": "Policy error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Method not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e73785-d3b4-4d67-969c-c3d72fdccddf",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Requested response body type is not supported\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eaca61ad-216f-40ac-b12c-d10b00d8ba87",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Length Required",
+              "code": 411,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing mandatory Content-Length headers\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9e41e0c-6d86-4b48-b941-5a85483e9e23",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unsupported request body type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ed94a3e-51d2-4833-af14-9fd08d902b00",
+              "name": "Policy error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signingRequest\": {\n    \"dest\": {\n      \"tn\": [\n        \"12155551213\",\n        \"12155551213\"\n      ],\n      \"uri\": [\n        \"john@asterisk.com\",\n        \"john@asterisk.com\"\n      ]\n    },\n    \"iat\": 1664199282,\n    \"orig\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"ppt\": \"shaken, div or rph\",\n    \"attest\": \"A , B or C\",\n    \"origid\": \"123e4567-e89b-12d3-a456-426655440000\",\n    \"rph\": {\n      \"auth\": [\n        \"esnet.0\"\n      ]\n    },\n    \"sph\": \"psap-callback\",\n    \"div\": {\n      \"tn\": \"121555551212\",\n      \"uri\": \"fred@example.com\",\n      \"hi\": \"1.1.1\"\n    },\n    \"profileId\": \"Profile-1234\",\n    \"requestId\": \"12378\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3c627b20-eb3b-49e6-ae6c-316141c80623",
+      "name": "verification",
+      "description": {
+        "content": "Used to verify one or more PASSporT JSON Web Tokens (or Identity headers).  Also, referred to as the STI Verification Service (STI-VS).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6b3a5b8-fe06-406a-8811-112c8fb848e2",
+          "name": "Verification (STI-VS) Request",
+          "request": {
+            "name": "Verification (STI-VS) Request",
+            "description": {},
+            "url": {
+              "path": [
+                "verification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"<string>\",\n    \"to\": {\n      \"tn\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"time\": \"<integer>\",\n    \"from\": {\n      \"tn\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"identityHeaders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"dest\": {\n      \"tn\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    \"protectedHeaders\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"profileId\": \"<string>\",\n    \"requestId\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19224fdd-f4be-4d1b-8fc4-4545a469a8fa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"verificationResponse\": {\n    \"requestId\": \"45690\",\n    \"displayName\": \"[V]John Smith\",\n    \"divResult\": [\n      {\n        \"div\": {\n          \"tn\": \"12155551212\",\n          \"uri\": \"string\"\n        },\n        \"verstatValue\": \"TN-Validation-Passed\"\n      },\n      {\n        \"div\": {\n          \"tn\": \"12155551212\",\n          \"uri\": \"string\"\n        },\n        \"verstatValue\": \"TN-Validation-Passed\"\n      }\n    ],\n    \"verstatValue\": \"TN-Validation-Passed\",\n    \"verstatPriority\": \"RPH-Validation-Passed\",\n    \"verifyResults\": [\n      {\n        \"verifyResult\": {\n          \"ppt\": \"shaken\",\n          \"status\": \"pass\",\n          \"validClaims\": {\n            \"attest\": \"B\",\n            \"dest\": {\n              \"tn\": [\n                \"12155551212\"\n              ],\n              \"uri\": null\n            },\n            \"iat\": 1664199282,\n            \"orig\": {\n              \"tn\": \"12155551211\"\n            },\n            \"origid\": \"123e4567-e89b-12d3-a456-426655440000\"\n          }\n        }\n      },\n      {\n        \"verifyResult\": {\n          \"ppt\": \"div\",\n          \"status\": \"pass\",\n          \"validClaims\": {\n            \"dest\": {\n              \"tn\": [\n                \"12155551213\"\n              ],\n              \"uri\": null\n            },\n            \"iat\": 1664199282,\n            \"orig\": {\n              \"tn\": \"12155551211\"\n            },\n            \"div\": {\n              \"tn\": \"121555551212\",\n              \"hi\": null\n            }\n          }\n        }\n      },\n      {\n        \"verifyResult\": {\n          \"ppt\": \"rph\",\n          \"status\": \"pass\",\n          \"validClaims\": {\n            \"dest\": {\n              \"tn\": [\n                \"12155551212\"\n              ],\n              \"uri\": null\n            },\n            \"iat\": 1664199282,\n            \"orig\": {\n              \"tn\": \"12155551211\"\n            },\n            \"rph\": {\n              \"auth\": [\n                \"esnet.0\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "792d9218-6750-433a-9902-ef78bea598d8",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing request body\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac910ac2-fcc4-4b8a-929f-49b7b03ff702",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Requested resource not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d2dcabc-457e-4989-8493-f8057c94e1dc",
+              "name": "Policy error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Method not allowed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7de3e17-7c91-46bf-b08e-5d9f6f419226",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Requested response body type is not supported\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e957f1c-c80b-403d-a84d-9890b4797344",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Length Required",
+              "code": 411,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing mandatory Content-Length headers\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45593b8b-c31d-4c2b-8e44-73927faf2e64",
+              "name": "Service error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Unsupported request body type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44de7f39-0852-44be-ae1d-3b0a82c1600d",
+              "name": "Policy error in processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"verificationRequest\": {\n    \"identityHeader\": \"kjhytrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"shaken\\\"\",\n    \"to\": {\n      \"tn\": \"12155551212\",\n      \"uri\": \"fred@example.com\"\n    },\n    \"time\": 1664216863,\n    \"from\": {\n      \"tn\": \"12155551211\",\n      \"uri\": \"alice@asterisk.com\"\n    },\n    \"identityHeaders\": [\n      \"mjhtrrciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"div\\\"\",\n      \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n    ],\n    \"dest\": {\n      \"tn\": \"12155551213\",\n      \"uri\": \"john@asterisk.com\"\n    },\n    \"protectedHeaders\": [\n      \"Diversion: sip:12155551212@10.10.100.12;reason=unknown;privacy=off\",\n      \"Resource-Priority: esnet.0\"\n    ],\n    \"profileId\": \"Profile-5678\",\n    \"requestId\": \"45690\",\n    \"displayName\": \"James Smith\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/stir/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "90396fa8-e018-49c1-b77d-943d9fdf4f07",
+    "name": "3GPP-based Call Authentication APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Note: The above download will output the 3GPP-based Call Authentication APIs in OpenAPI format.<br><br>Definition of the Application Server HTTP messages and data types for signing and verification using the Ms reference point. These APIs are designed to be compliant with the referenced 3GPP specification, while also including several optional enhancements.  Such enhancements may or may not be brought back into the 3GPP CT1 working group for consideration.",
+      "type": "text/plain"
+    }
+  }
+}

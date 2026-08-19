@@ -1,0 +1,68 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/transunion-trucontact-tcs-shaken-openapi.yml; github.com/neustar/tcs-apis
+  (releases/tags/branches, read 2026-08-13)
+note: >-
+  No StatusPage and no Deprecation pointer are emitted in apis.yml: TransUnion publishes
+  neither a public status page reachable to us nor a deprecation/sunset policy. The
+  TruContact TCS API is versioned in the URI path and governed through a public GitHub
+  proposal process, which is the whole of the published lifecycle contract.
+versioning:
+  scheme: uri-path
+  current: v2
+  spec_version: 1.0.0
+  docs: https://neustar.github.io/tcs-apis/
+  detail: >-
+    Paths are /authn/v2/* and /verify/v2/*. info.version (1.0.0) versions the specification
+    document, not the service.
+change_process:
+  type: public-proposal
+  url: https://github.com/neustar/tcs-apis/issues
+  detail: >-
+    The repo README defines a formal proposal workflow — file an issue, triage to
+    accept/decline/design-doc, then implement — and states the intent plainly: "In the
+    spirit of being a public API, we've chosen to publicize the generators that create our
+    documentation." That is an unusually open governance posture for a credit bureau.
+  contributing: https://github.com/neustar/tcs-apis/blob/main/CONTRIBUTING.md
+  license: MIT
+releases:
+  - tag: 3gpp-full-specs
+    date: '2023-01-18'
+    url: https://github.com/neustar/tcs-apis/releases/tag/3gpp-full-specs
+releases_note: >-
+  Only one tagged release exists, and there is no dated changelog to capture. The
+  repository's CHANGELOG.md is NOT TransUnion's — it is Redocly's, inherited because the
+  docs site is a fork of Redoc — so no ChangeLog artifact or pointer is emitted rather than
+  crediting TransUnion with another project's release history.
+unreleased_work:
+  - branch: feature/allEndpoints
+    detail: >-
+      Extends the 3GPP companion spec from 2 to 6 operations (adds divSigning, rphSigning,
+      divVerification, rphVerification). Unmerged as of 2026-08-13, so the published contract
+      is the narrower one.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: No deprecation policy, no RFC 8594 Sunset/Deprecation header support documented.
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+  detail: >-
+    Not applicable in the usual sense — TCS AS/VS is deployed inside the carrier's own
+    network (templated server block), so availability is governed by the carrier contract,
+    not a public SLA page.
+status_page: null
+status_page_note: >-
+  No status.transunion.com or equivalent was found; www.transunion.com answers 403 to
+  non-browser clients, so a status page could not be confirmed either way.
+end_of_life:
+  - surface: developer.transunion.com
+    state: gone
+    detail: >-
+      The host recorded as this provider's humanURL and baseURL since 2026-05 no longer
+      resolves — NXDOMAIN on 2026-08-13. The Global Developer Portal as catalogued is dead;
+      TransUnion's live technical surfaces are techservices.transunion.com (403 to bots),
+      transunion.readme.io (401, credentialed) and the regional CIBIL API Marketplace.
+    checked: '2026-08-13'

@@ -1,0 +1,38 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for TransUnion TruContact 3GPP-based Call Authentication APIs
+  version: 1.0.0
+extends: openapi/transunion-trucontact-3gpp-call-authentication-openapi.yml
+x-apievangelist:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/transunion-trucontact-3gpp-call-authentication-openapi.yml
+  note: >-
+    The companion spec, aligned to 3GPP TS 24.229 Release 17.10.0 (Ms reference point).
+    Two things about it are worth recording and neither is fixed by editing the original:
+    its only server is a localhost placeholder, and the published main branch carries just
+    two of the six operations that exist on the unmerged feature/allEndpoints branch.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: TransUnion
+      x-apievangelist-product: TruContact Trusted Call Solutions
+      x-apievangelist-source: https://github.com/neustar/tcs-apis (branch main, 3GPP_OpenAPISpec.yaml)
+      x-apievangelist-docs: https://neustar.github.io/tcs-apis/
+      x-apievangelist-server-note: >-
+        servers[] is http://localhost:8080/stir/v1 — a development placeholder published as
+        the contract's only server. Left verbatim because it is what the provider ships;
+        recorded here so no consumer or downstream artifact mistakes it for a real host.
+      x-apievangelist-coverage-note: >-
+        main publishes /signing and /verification. The unmerged feature/allEndpoints branch
+        adds /divSigning, /rphSigning, /divVerification and /rphVerification, matching the
+        ATIS-1000085 (div) and ATIS-1000098 (rph) standards the description claims support
+        for. The published contract therefore under-describes the implemented surface.
+  - target: $.info
+    update:
+      contact:
+        name: TransUnion TruContact Trusted Call Solutions
+        url: https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
+      license:
+        name: MIT
+        url: https://github.com/neustar/tcs-apis/blob/main/LICENSE

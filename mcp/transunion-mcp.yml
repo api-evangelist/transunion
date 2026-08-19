@@ -1,0 +1,53 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+note: >-
+  TransUnion ships NO MCP server. Searched the docs surface, npm (@modelcontextprotocol,
+  transunion, truvalidate, trucontact, iovation, neustar), PyPI and the public MCP
+  registries on 2026-08-13 and found nothing first-party. The tools below are a CANDIDATE
+  set derived one-for-one from the nine operations in the published TruContact TCS
+  OpenAPI; they are what an MCP server over this API would expose, not something a client
+  can call today. No endpoint is asserted because none exists.
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+server:
+  name: transunion-trucontact-tcs
+  transport: null
+  url: null
+tools:
+  - name: sign_identity_json
+    description: Create a SIP Identity header (PASSporT) from a JSON signing request and return JSON.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#authn/identityj-j
+  - name: sign_identity_text_to_json
+    description: Create a SIP Identity header from a text/plain signing request and return JSON.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#authn/identitys-j
+  - name: sign_identity_text
+    description: Create a SIP Identity header from a text/plain signing request and return text/plain.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#authn/identitys-s
+  - name: sign_identity_multipart_text
+    description: Create a SIP Identity header from a multipart text/JSON request and return text/plain.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#authn/identitymps
+  - name: sign_identity_multipart_json
+    description: Create a SIP Identity header from a multipart text/JSON request and return JSON.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#authn/identitympj
+  - name: verify_identity_json
+    description: Verify one or more PASSporT/Identity headers from a JSON request and return JSON.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#verify/identityj-j
+  - name: verify_identity_text_to_json
+    description: Verify Identity headers from a text/plain request and return JSON.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#verify/identitys-j
+  - name: verify_identity_text
+    description: Verify Identity headers from a text/plain request and return text/plain.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#verify/identitys-s
+  - name: verify_identity_cvt
+    description: >-
+      Verify Identity headers with Call Validation Treatment, returning the verification
+      status plus CNAM and robocall-analytics treatment.
+    source_operation: openapi/transunion-trucontact-tcs-shaken-openapi.yml#verify/identitycvt
+searched:
+  - {registry: npm, queries: [transunion, truvalidate, trucontact, iovation, neustar], result: no first-party MCP package}
+  - {registry: pypi, queries: [transunion, truvalidate, iovation], result: no first-party MCP package}
+  - {surface: docs, url: 'https://neustar.github.io/tcs-apis/', result: no MCP mention}

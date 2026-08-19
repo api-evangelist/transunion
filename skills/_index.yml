@@ -1,0 +1,29 @@
+generated: '2026-08-13'
+method: generated
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+note: >-
+  Two skills covering the whole published TransUnion API surface — the Authentication
+  Service and the Verification Service of TruContact Trusted Call Solutions. Every
+  operationId referenced was grepped out of the spec; none is invented. No skills are
+  written for TransUnion's credit, TruValidate decisioning or CIBIL APIs because those
+  publish no machine-readable contract to ground steps in. Searched for provider-published
+  skills first: neustar/tcs-apis has no AGENTS.md (404) and the docs host serves no
+  llms.txt (404).
+skills:
+  - file: transunion-sign-outbound-call.md
+    name: Sign an outbound call with a SHAKEN PASSporT
+    api: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+    operations:
+      - authn/identityj-j
+      - authn/identitys-j
+      - authn/identitys-s
+      - authn/identitymps
+      - authn/identitympj
+  - file: transunion-verify-inbound-call.md
+    name: Verify an inbound call and apply Call Validation Treatment
+    api: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+    operations:
+      - verify/identityj-j
+      - verify/identitys-j
+      - verify/identitys-s
+      - verify/identitycvt

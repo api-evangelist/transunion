@@ -1,0 +1,754 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/transunion-trucontact-tcs-shaken-openapi.yml
+note: TransUnion TruContact Trusted Call Solutions publishes no separate error reference page; this catalog
+  was extracted structurally from the named response examples in the published OpenAPI 3.1.0, one row
+  per unique error_id, with http_status / sip_code / reason taken from the same example object so no pairing
+  is inferred. Every operation declares only the wildcard response codes 200 / 4xx / 5xx, so the concrete
+  statuses below exist ONLY inside these examples — a client generating from the response codes alone
+  would never see them.
+format: vendor-json
+rfc9457: false
+envelope:
+  media_type: application/json (also text/plain on the *-s operations)
+  authentication_service_shape: 'a single error object: {error_id, http_status_code, sip_code, timestamp,
+    reason, developer_message?, attributes?}'
+  verification_service_shape: '{status: "error", error: [ {error_id, http_status_code, sip_code, timestamp,
+    reason, ...} ]} — the Verification Service returns an ARRAY of errors'
+  required_fields:
+  - error_id
+  - http_status_code
+  - sip_code
+  - reason
+  - timestamp
+  schemas:
+  - ErrorResponse400
+  - ErrorResponse500
+  - ErrorResponseCerts400
+  - VerifyErrorResponse
+  domain_note: sip_code carries the SIP response code (e.g. 436 Bad Identity Info, 437 Unsupported Credential,
+    438 Invalid Identity Header) that the STI-AS/STI-VS maps the HTTP failure onto — the field an agent
+    needs to reconcile an API failure with call signalling.
+declared_response_codes:
+  '200': 9
+  4xx: 9
+  5xx: 9
+error_count: 179
+errors:
+- error_id: ApiKeyInvalid
+  http_status: 400
+  sip_code: 400
+  reason: API key is invalid
+- error_id: ApiKeyRequired
+  http_status: 400
+  sip_code: 400
+  reason: API key is required
+- error_id: AtisSigningRequestInvalid
+  http_status: 400
+  sip_code: 400
+  reason: Received invalid parameters
+- error_id: AtisSigningRequestMissing
+  http_status: 400
+  sip_code: 400
+  reason: Missing mandatory parameters in the signing request
+- error_id: AtisVerificationRequestInvalid
+  http_status: 400
+  sip_code: 400
+  reason: Received invalid parameters
+- error_id: AtisVerificationRequestMissing
+  http_status: 400
+  sip_code: 400
+  reason: Missing mandatory parameters in the verification request
+- error_id: CallInfoHeaderInvalid
+  http_status: 400
+  sip_code: 403
+  reason: Call  Info header is invalid
+- error_id: CertificateConversionError
+  http_status: 400
+  sip_code: 436
+  reason: Error in converting the data to a certificate
+- error_id: CertificateExpired
+  http_status: 403
+  sip_code: 437
+  reason: Certificate has expired
+- error_id: CertificateFetchError
+  http_status: 400
+  sip_code: 436
+  reason: Error in fetching the certificate
+- error_id: CertificateIdInvalid
+  http_status: 400
+  sip_code: 400
+  reason: Certificate is invalid
+- error_id: CertificateIdRequired
+  http_status: 400
+  sip_code: 400
+  reason: Certificate id is required
+- error_id: CertificateNotFound
+  http_status: 403
+  sip_code: 438
+  reason: Certificate not found
+- error_id: CertificateNotSupported
+  http_status: 403
+  sip_code: 437
+  reason: Certificate type is not supported
+- error_id: CertificateNotValidForDiv
+  http_status: 403
+  sip_code: 437
+  reason: Certificate is not valid for the diverted call
+- error_id: CertificateNotValidForOrig
+  http_status: 403
+  sip_code: 437
+  reason: Certificate is not valid for the originator
+- error_id: CertificateNotYetValid
+  http_status: 403
+  sip_code: 438
+  reason: Certificate not yet valid
+- error_id: CertificateTnAuthnListFetchError
+  http_status: 400
+  sip_code: 436
+  reason: Error in fetching the TNAuthorizationList data
+- error_id: CertificateValidationError
+  http_status: 400
+  sip_code: 437
+  reason: Certificate validation failed
+- error_id: CnamDataNotFound
+  http_status: 400
+  sip_code: 400
+  reason: CNAM data not found
+- error_id: CnamNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: CNAM service not authorized
+- error_id: ContentNotFound
+  http_status: 400
+  sip_code: 403
+  reason: Content not found in SIP INVITE message
+- error_id: ContentTypeHeaderInvalid
+  http_status: 400
+  sip_code: 403
+  reason: Content  Type header is invalid
+- error_id: CredentialCertificateNotFound
+  http_status: 403
+  sip_code: 437
+  reason: Certificate not found
+- error_id: CredentialCertificateUrlRequired
+  http_status: 403
+  sip_code: 437
+  reason: Certificate URL not found
+- error_id: CredentialExpired
+  http_status: 403
+  sip_code: 437
+  reason: Credential has expired
+- error_id: CredentialKeyStoreError
+  http_status: 403
+  sip_code: 437
+  reason: Error in accessing keystore
+- error_id: CredentialNotFound
+  http_status: 403
+  sip_code: 437
+  reason: Credential not found
+- error_id: CredentialNotSupported
+  http_status: 403
+  sip_code: 437
+  reason: Credential type is not supported
+- error_id: CredentialNotYetValid
+  http_status: 403
+  sip_code: 437
+  reason: Credential not yet valid
+- error_id: CredentialPrivateKeyNotFound
+  http_status: 403
+  sip_code: 437
+  reason: Private key not found
+- error_id: CredentialPrivateKeyNotSupported
+  http_status: 403
+  sip_code: 437
+  reason: Private key not supported
+- error_id: CredentialPrivateKeyNotValid
+  http_status: 403
+  sip_code: 437
+  reason: Private key not valid
+- error_id: CustomerCertificateNotFound
+  http_status: 400
+  sip_code: 400
+  reason: Customer certificate not found
+- error_id: CustomerCredentialNotFound
+  http_status: 400
+  sip_code: 400
+  reason: Customer credential not found
+- error_id: CustomerNotFound
+  http_status: 400
+  sip_code: 400
+  reason: Customer not found
+- error_id: DateParseException
+  http_status: 400
+  sip_code: 400
+  reason: Date is expected to be in RFC 1123 format
+- error_id: DestNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: dest telephone number is not authorized
+- error_id: EcnamDataNotFound
+  http_status: 400
+  sip_code: 400
+  reason: ECNAM data not found
+- error_id: EcnamNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: ECNAM service not authorized
+- error_id: IdentityClaimDestInvalid
+  http_status: 400
+  sip_code: 438
+  reason: dest value specified in PASSporT claim is not valid
+- error_id: IdentityClaimDestMismatch
+  http_status: 400
+  sip_code: 438
+  reason: dest value specified in PASSporT claim does not match SIP To header value
+- error_id: IdentityClaimDestRequired
+  http_status: 400
+  sip_code: 438
+  reason: dest value is required in PASSporT claim
+- error_id: IdentityClaimDestTnRequired
+  http_status: 400
+  sip_code: 438
+  reason: dest value is required to contain a telephone number in PASSporT claim
+- error_id: IdentityClaimDivEndNotFound
+  http_status: 400
+  sip_code: 438
+  reason: Identity diversion claim chain does not end with SIP To Header
+- error_id: IdentityClaimDivInfiniteLoop
+  http_status: 400
+  sip_code: 438
+  reason: Identity diversion claim chain contains infinite loops
+- error_id: IdentityClaimDivInvalid
+  http_status: 400
+  sip_code: 438
+  reason: div value is invalid in PASSporT claim
+- error_id: IdentityClaimDivNotUnique
+  http_status: 400
+  sip_code: 438
+  reason: Identity diversion claim chain is not unique
+- error_id: IdentityClaimDivOptInvalid
+  http_status: 400
+  sip_code: 438
+  reason: opt value is invalid in PASSporT claim
+- error_id: IdentityClaimDivRequired
+  http_status: 400
+  sip_code: 438
+  reason: div value is required in PASSporT claim
+- error_id: IdentityClaimDivStartInvalid
+  http_status: 400
+  sip_code: 438
+  reason: Identity diversion claim chain does start with a regular claim
+- error_id: IdentityClaimDivTnRequired
+  http_status: 400
+  sip_code: 438
+  reason: div value is required to be a telephone number in PASSporT claim
+- error_id: IdentityClaimEncodingInvalid
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT claim Base64 encoding is not valid
+- error_id: IdentityClaimIatRequired
+  http_status: 400
+  sip_code: 438
+  reason: iat value is required in PASSporT claim
+- error_id: IdentityClaimInvalidDate
+  http_status: 403
+  sip_code: 403
+  reason: Invalid Date value in PASSporT claim; It is too far apart from the current time
+- error_id: IdentityClaimMkyInvalid
+  http_status: 400
+  sip_code: 438
+  reason: mky value specified in PASSporT claim is not valid
+- error_id: IdentityClaimMkyMismatch
+  http_status: 400
+  sip_code: 438
+  reason: mky value specified in PASSporT claim does not match SDP a:fingerprint values
+- error_id: IdentityClaimOrigInvalid
+  http_status: 400
+  sip_code: 438
+  reason: orig value specified in PASSporT claim is not valid
+- error_id: IdentityClaimOrigMismatch
+  http_status: 400
+  sip_code: 438
+  reason: orig value specified in PASSporT claim does not match SIP From/P  Asserted  Identity header
+    values
+- error_id: IdentityClaimOrigRequired
+  http_status: 400
+  sip_code: 438
+  reason: orig value is required in PASSporT claim
+- error_id: IdentityClaimOrigTnRequired
+  http_status: 400
+  sip_code: 438
+  reason: orig value is required to be a telephone number in PASSporT claim
+- error_id: IdentityClaimParseError
+  http_status: 400
+  sip_code: 438
+  reason: Error in parsing PASSporT claim
+- error_id: IdentityClaimPayloadInvalid
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT claim payload is not valid
+- error_id: IdentityClaimPayloadMismatch
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT claim payload does mot match the re  constructed one
+- error_id: IdentityClaimRcdCrnMismatch
+  http_status: 400
+  sip_code: 438
+  reason: crn value does not match the re  constructed one
+- error_id: IdentityClaimRcdJcardInfoInvalid
+  http_status: 400
+  sip_code: 438
+  reason: jcd and jcl values is mutually exclusive in RCD PASSporT claim
+- error_id: IdentityClaimRcdJclInvalid
+  http_status: 400
+  sip_code: 438
+  reason: jcl value is invalid in RCD PASSporT claim
+- error_id: IdentityClaimRcdJclMismatch
+  http_status: 400
+  sip_code: 438
+  reason: jcl value does not match the re  constructed one
+- error_id: IdentityClaimRcdNamMismatch
+  http_status: 400
+  sip_code: 438
+  reason: nam value does not match the re  constructed one
+- error_id: IdentityClaimRcdNamRequired
+  http_status: 400
+  sip_code: 438
+  reason: nam value is required in RCD PASSport claim
+- error_id: IdentityClaimRcdRequired
+  http_status: 400
+  sip_code: 438
+  reason: rcd value is required in RCD PASSport claim
+- error_id: IdentityClaimRcdSignAlgoInvalid
+  http_status: 400
+  sip_code: 438
+  reason: rcdi algorithm is invalid in RCD PASSporT claim
+- error_id: IdentityClaimRcdSignatureInvalid
+  http_status: 400
+  sip_code: 438
+  reason: rcdi value is invalid in RCD PASSporT claim
+- error_id: IdentityClaimRcdSignatureMismatch
+  http_status: 400
+  sip_code: 438
+  reason: rcdi value does not match the re  constructed one
+- error_id: IdentityClaimRequiredMissing
+  http_status: 400
+  sip_code: 438
+  reason: Required PASSporT claim field is missing
+- error_id: IdentityClaimRphAuthInvalid
+  http_status: 400
+  sip_code: 438
+  reason: auth value is invalid in PASSporT claim
+- error_id: IdentityClaimRphAuthNotFound
+  http_status: 400
+  sip_code: 438
+  reason: auth value is not found in SIP Resource  Priority headers
+- error_id: IdentityClaimRphAuthRequired
+  http_status: 400
+  sip_code: 438
+  reason: auth value is required in PASSporT claim
+- error_id: IdentityClaimRphRequired
+  http_status: 400
+  sip_code: 438
+  reason: rph value is required in PASSporT claim
+- error_id: IdentityClaimShakenAttestInvalid
+  http_status: 400
+  sip_code: 438
+  reason: attest value is invalid in PASSporT claim
+- error_id: IdentityClaimShakenAttestRequired
+  http_status: 400
+  sip_code: 438
+  reason: attest value is required in PASSporT claim
+- error_id: IdentityClaimShakenOrigidRequired
+  http_status: 400
+  sip_code: 438
+  reason: origid value is required in PASSporT claim
+- error_id: IdentityClaimStaleDate
+  http_status: 403
+  sip_code: 403
+  reason: Stale date value in PASSporT claim
+- error_id: IdentityClaimValueInvalid
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT claim value is invalid
+- error_id: IdentityCompactPptUnsupported
+  http_status: 400
+  sip_code: 438
+  reason: SIP Identity header in compact form with ppt parameter is not supported
+- error_id: IdentityHeaderAlgMismatch
+  http_status: 400
+  sip_code: 438
+  reason: alg value specified in PASSporT header does not match the alg parameter
+- error_id: IdentityHeaderAlgRequired
+  http_status: 400
+  sip_code: 438
+  reason: alg value is required in PASSporT header
+- error_id: IdentityHeaderAlgUnsupported
+  http_status: 400
+  sip_code: 436
+  reason: alg value specified in PASSporT header is not supported
+- error_id: IdentityHeaderEncodingInvalid
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT header Base64 encoding is not valid
+- error_id: IdentityHeaderParseError
+  http_status: 400
+  sip_code: 438
+  reason: Error in parsing PASSporT header
+- error_id: IdentityHeaderPayloadInvalid
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT header payload is not valid
+- error_id: IdentityHeaderPayloadMismatch
+  http_status: 400
+  sip_code: 438
+  reason: PASSporT header payload does not match the re  constructed one
+- error_id: IdentityHeaderPptMismatch
+  http_status: 400
+  sip_code: 438
+  reason: ppt value specified in PASSporT header does not match the ppt parameter
+- error_id: IdentityHeaderPptRequired
+  http_status: 400
+  sip_code: 438
+  reason: ppt value is required in PASSporT header
+- error_id: IdentityHeaderPptUnsupported
+  http_status: 400
+  sip_code: 438
+  reason: ppt value specified in PASSporT header is not supported
+- error_id: IdentityHeaderTypRequired
+  http_status: 400
+  sip_code: 438
+  reason: typ value is required in PASSporT header
+- error_id: IdentityHeaderTypUnsupported
+  http_status: 400
+  sip_code: 438
+  reason: typ value specified in PASSporT header is not supported
+- error_id: IdentityHeaderX5uMismatch
+  http_status: 400
+  sip_code: 438
+  reason: x5u value specified in PASSporT header does not match the info parameter
+- error_id: IdentityHeaderX5uRequired
+  http_status: 400
+  sip_code: 438
+  reason: x5u value is required in PASSporT header
+- error_id: IdentityParameterAlgUnsupported
+  http_status: 400
+  sip_code: 436
+  reason: alg parameter value specified is not supported
+- error_id: IdentityParameterInfoInvalid
+  http_status: 400
+  sip_code: 438
+  reason: info parameter value is not a valid URL
+- error_id: IdentityParameterInfoRequired
+  http_status: 400
+  sip_code: 438
+  reason: info parameter value is required
+- error_id: IdentityParameterInfoUnsupported
+  http_status: 400
+  sip_code: 438
+  reason: info parameter value is not a URL of supported protocol
+- error_id: IdentityParameterPptRequired
+  http_status: 400
+  sip_code: 438
+  reason: ppt parameter value is required
+- error_id: IdentityParameterPptUnsupported
+  http_status: 400
+  sip_code: 436
+  reason: ppt parameter value specified is not supported
+- error_id: IdentitySignatureAlgoMismatch
+  http_status: 400
+  sip_code: 437
+  reason: Identity signature algorithm not matching signing private key type
+- error_id: IdentitySignatureAlgoRequired
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature algorithm not specified
+- error_id: IdentitySignatureEcdsaDerInvalid
+  http_status: 400
+  sip_code: 438
+  reason: Identity ECDSA signature failed to be converted from DER into JWS format
+- error_id: IdentitySignatureEcdsaJwsInvalid
+  http_status: 400
+  sip_code: 438
+  reason: Identity ECDSA signature failed to be converted from JWS into DER format
+- error_id: IdentitySignatureEncodingInvalid
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature Base64 encoding is not valid
+- error_id: IdentitySignaturePayloadInvalid
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature payload is not valid
+- error_id: IdentitySignaturePayloadMismatch
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature payload does not match the re  constructed one
+- error_id: IdentitySignatureSigningError
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature signing process failed
+- error_id: IdentitySignatureVerifyError
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature verification process failed
+- error_id: IdentitySignatureVerifyFailed
+  http_status: 400
+  sip_code: 438
+  reason: Identity signature failed to be verified
+- error_id: InternalRetryTnOwnershipOverride
+  http_status: 500
+  sip_code: 500
+  reason: Internal retry due to TN ownership override
+- error_id: InternalServerError
+  http_status: 500
+  sip_code: 500
+  reason: Internal server error
+- error_id: InvalidParameterException
+  http_status: 400
+  sip_code: 400
+  reason: Parameter is missing or invalid
+- error_id: MediaTypeException
+  http_status: 400
+  sip_code: 400
+  reason: Content  Type is invalid or not supported
+- error_id: MediaTypeNotAcceptableException
+  http_status: 406
+  sip_code: 400
+  reason: Content  Type is not acceptable
+- error_id: MediaTypeNotSupportedException
+  http_status: 415
+  sip_code: 400
+  reason: Content  Type is invalid or not supported
+- error_id: MessageParseException
+  http_status: 400
+  sip_code: 400
+  reason: Error in parsing the request
+- error_id: MethodNotSupportedException
+  http_status: 400
+  sip_code: 400
+  reason: Request method is not supported
+- error_id: OrigDestNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: orig and dest combination is not authorized
+- error_id: OrigNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: orig telephone number is not authorized
+- error_id: OrigidValueNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: origid value is not authorized
+- error_id: PptParameterValueNotSupported
+  http_status: 400
+  sip_code: 400
+  reason: ppt parameter value is not supported
+- error_id: RequestDestCountryCodeInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Destination country code invalid
+- error_id: RequestDestTnRequired
+  http_status: 403
+  sip_code: 403
+  reason: Destination must contain a telephone number
+- error_id: RequestDivTnRequired
+  http_status: 403
+  sip_code: 403
+  reason: Diversion header must contain a telephone number
+- error_id: RequestDiversionHeaderInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Diversion header value invalid
+- error_id: RequestDiversionHeaderRequired
+  http_status: 403
+  sip_code: 428
+  reason: Diversion header value required
+- error_id: RequestFingerPrintAlgoInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Invalid SDP fingerprint algorithm
+- error_id: RequestFingerPrintDigestInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Invalid DSP fingerprint digest
+- error_id: RequestFromHeaderRequired
+  http_status: 403
+  sip_code: 403
+  reason: From header value required
+- error_id: RequestIdentityHeaderDivRequired
+  http_status: 403
+  sip_code: 428
+  reason: Identity header with 'ppt' as 'div' required
+- error_id: RequestIdentityHeaderInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Identity header value invalid
+- error_id: RequestIdentityHeaderRequired
+  http_status: 403
+  sip_code: 428
+  reason: Identity header value required
+- error_id: RequestInvalidDate
+  http_status: 403
+  sip_code: 403
+  reason: Invalid Date value; It is too far apart from the current time
+- error_id: RequestObjectInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Invalid request object supplied
+- error_id: RequestOrigCountryCodeInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Originator country code(s) invalid
+- error_id: RequestOrigTnRequired
+  http_status: 403
+  sip_code: 403
+  reason: Originator must be a telephone number
+- error_id: RequestRCdJcardDataFetchError
+  http_status: 403
+  sip_code: 403
+  reason: RCD JCard data failed to be fetched
+- error_id: RequestRcdJcardDataInvalid
+  http_status: 403
+  sip_code: 403
+  reason: RCD JCard data invalid
+- error_id: RequestRcdJcardDataRequired
+  http_status: 403
+  sip_code: 403
+  reason: RCD JCard data required
+- error_id: RequestRcdJcardDataUriInvalid
+  http_status: 403
+  sip_code: 403
+  reason: RCD JCard data URI invalid
+- error_id: RequestRcdJcardInfoInvalid
+  http_status: 403
+  sip_code: 403
+  reason: RCD JCard information invalid
+- error_id: RequestRcdJcardPropertyUriInvalid
+  http_status: 403
+  sip_code: 403
+  reason: RCD JCard property URI invalid
+- error_id: RequestRcdSignatureAlgoInvalid
+  http_status: 403
+  sip_code: 403
+  reason: RCD integrity signature algorithm invalid
+- error_id: RequestRcdSignatureInvalid
+  http_status: 403
+  sip_code: 403
+  reason: RCD integrity signature invalid
+- error_id: RequestResourcePriorityInvalid
+  http_status: 403
+  sip_code: 403
+  reason: Resource Priority header value invalid
+- error_id: RequestResourcePriorityRequired
+  http_status: 403
+  sip_code: 428
+  reason: Resource Priority header value required
+- error_id: RequestShakenAttestInvalid
+  http_status: 403
+  sip_code: 403
+  reason: SHAKEN attest value invalid
+- error_id: RequestShakenAttestRequired
+  http_status: 403
+  sip_code: 403
+  reason: SHAKEN attest value required
+- error_id: RequestShakenOrigidRequired
+  http_status: 403
+  sip_code: 403
+  reason: SHAKEN origid value required
+- error_id: RequestStaleDate
+  http_status: 403
+  sip_code: 403
+  reason: Stale date value
+- error_id: RequestToHeaderRequired
+  http_status: 403
+  sip_code: 403
+  reason: To header value required
+- error_id: ServiceNotAvailableForSipInvite
+  http_status: 503
+  sip_code: 503
+  reason: Service not available when processing a SIP INVITE message
+- error_id: ServiceNotAvailableForSipOptions
+  http_status: 503
+  sip_code: 503
+  reason: Service not available when processing a SIP OPTIONS message
+- error_id: SipCallTreatmentDeny
+  http_status: 403
+  sip_code: 603
+  reason: Call to be blocked
+- error_id: SipCallTreatmentSendToVm
+  http_status: 403
+  sip_code: 607
+  reason: Call to be sent to voice mail
+- error_id: SipInterfaceCidrInvalid
+  http_status: 500
+  sip_code: 500
+  reason: SIP interface cidr is invalid
+- error_id: SipInterfaceIpAddressInvalid
+  http_status: 400
+  sip_code: 400
+  reason: SIP interface IP address is invalid
+- error_id: SipInterfaceNotAuthorized
+  http_status: 400
+  sip_code: 400
+  reason: SIP interface IP address/port not authorized
+- error_id: SipInterfacePortInvalid
+  http_status: 400
+  sip_code: 400
+  reason: SIP interface port is invalid
+- error_id: SipInviteDateInvalid
+  http_status: 400
+  sip_code: 403
+  reason: SIP INVITE Date header is invalid
+- error_id: SipInviteMessageInvalid
+  http_status: 400
+  sip_code: 403
+  reason: SIP INVITE message is invalid
+- error_id: StatusParameterValueInvalid
+  http_status: 400
+  sip_code: 400
+  reason: '''status'' parameter value is not valid'
+- error_id: StatusValueInvalidForInput
+  http_status: 400
+  sip_code: 400
+  reason: '''status'' value is not valid for input'
+- error_id: TelephoneNumberInvalid
+  http_status: 400
+  sip_code: 400
+  reason: Telephone number for CNAM/ECNAM query is not valid
+- error_id: TelephoneNumberNotFound
+  http_status: 400
+  sip_code: 400
+  reason: Telephone number for CNAM/ECNAM query is not found
+- error_id: TrustStoreFetchError
+  http_status: 403
+  sip_code: 403
+  reason: Error in fetching the trust store
+- error_id: UriEncodingInvalid
+  http_status: 400
+  sip_code: 416
+  reason: URI encoding is invalid
+- error_id: UriParseError
+  http_status: 400
+  sip_code: 416
+  reason: URI parsing failed
+- error_id: UriSchemeInvalid
+  http_status: 400
+  sip_code: 416
+  reason: URI scheme is invalid
+- error_id: UriUserPartRequired
+  http_status: 400
+  sip_code: 416
+  reason: URI user  part is required
+- error_id: VerstatNotSupported
+  http_status: 400
+  sip_code: 400
+  reason: Verstat is not supported for the PASSporT type
+- error_id: VerstatValueInvalid
+  http_status: 400
+  sip_code: 400
+  reason: Verstat value is invalid
+- error_id: VerstatValueRequired
+  http_status: 400
+  sip_code: 400
+  reason: Verstat value is required
