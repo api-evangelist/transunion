@@ -28,7 +28,7 @@ tags:
 description: 'A global information and insights company providing credit reporting, risk, fraud, and identity solutions. One of the three largest consumer credit bureaus in the United States, serving businesses and consumers across multiple international markets. Its credit and TruValidate decisioning APIs are contract-gated, but its TruContact Trusted Call Solutions business — acquired with Neustar in December 2021 — publishes an open, MIT-licensed OpenAPI for the STIR/SHAKEN call authentication and verification service.'
 created: '2026-05-05'
 modified: '2026-08-13'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: transunion:trucontact-trusted-call-solutions
     name: TransUnion TruContact Trusted Call Solutions (STI-AS / STI-VS)
