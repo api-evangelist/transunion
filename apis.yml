@@ -30,72 +30,179 @@ created: '2026-05-05'
 modified: '2026-08-13'
 specificationVersion: '0.23'
 apis:
-  - aid: transunion:trucontact-trusted-call-solutions
-    name: TransUnion TruContact Trusted Call Solutions (STI-AS / STI-VS)
-    description: 'The STIR/SHAKEN call Authentication Service and Verification Service behind TransUnion TruContact Branded Communications. Nine POST operations sign SIP Identity headers (PASSporTs) and verify them, with a Call Validation Treatment variant that returns calling name and robocall analytics alongside the verdict. The only TransUnion API with a public machine-readable contract: the OpenAPI 3.1.0 is published on GitHub under an MIT licence with an open proposal process.'
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://neustar.github.io/tcs-apis/
-    baseURL: 'https://{hostname}:{port}/{optionalRoutingPath}'
-    x-base-url-note: 'Templated by design, not a defect. The AS/VS is deployed inside each carrier''s own network under its TruContact agreement, so there is no TransUnion-hosted endpoint; the hostname comes from the operator''s deployment.'
-    x-ownership-note: 'Published under the Neustar brand and logo at github.com/neustar/tcs-apis. Neustar''s Communications Solutions business became TransUnion TruContact after TransUnion''s $3.1B acquisition of Neustar closed in December 2021, and Trusted Call Solutions is marketed today at transunion.com/solution/trucontact/branded-communications/trusted-call-solutions.'
-    tags:
-      - Call Authentication
-      - STIR/SHAKEN
-      - Telecommunications
-      - Fraud Prevention
-      - Robocall Mitigation
-    properties:
-      - type: OpenAPI
-        url: openapi/transunion-trucontact-tcs-shaken-openapi.yml
-      - type: OpenAPI
-        url: openapi/transunion-trucontact-3gpp-call-authentication-openapi.yml
-      - type: Overlay
-        url: overlays/transunion-trucontact-tcs-shaken-overlay.yaml
-      - type: Overlay
-        url: overlays/transunion-trucontact-3gpp-call-authentication-overlay.yaml
-      - type: Documentation
-        url: https://neustar.github.io/tcs-apis/
-      - type: APIReference
-        url: https://neustar.github.io/tcs-apis/
-      - type: SourceCode
-        url: https://github.com/neustar/tcs-apis
-      - type: Solutions
-        url: https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
-  - aid: transunion:global-developer-portal
-    name: TransUnion Global Developer Portal
-    description: 'TransUnion''s API products for credit reporting, identity verification, fraud prevention and consumer risk decisioning. Access requires a business agreement with TransUnion and credentials issued by an account manager; no machine-readable contract is published. The historical portal host developer.transunion.com no longer resolves (NXDOMAIN, checked 2026-08-13), so the live technical surface is Client Technical Services.'
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://techservices.transunion.com/
-    x-base-url-note: 'No baseURL recorded. developer.transunion.com — carried here since 2026-05 — is NXDOMAIN as of 2026-08-13, and no public TransUnion document states a production API host for these products. Recorded as missing rather than guessed from the domain.'
-    tags:
-      - Credit Reporting
-      - Identity
-      - Fraud Prevention
-      - Risk Decisioning
-      - Consumer Insights
-    properties:
-      - type: Documentation
-        url: https://techservices.transunion.com/doc-repository
-      - type: Solutions
-        url: https://www.transunion.com/business
-  - aid: transunion:truvalidate-device-risk
-    name: TransUnion TruValidate Device Risk
-    description: 'Device recognition and fraud signals, formerly iovation FraudForce. Mobile SDKs collect a device "blackbox" that is submitted to a risk check from your servers. The API host api.iovation.com is behind mutual TLS — it answers "Unauthorized - missing/invalid client certificate" to any anonymous request — and no OpenAPI is published.'
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://github.com/iovation
-    baseURL: https://api.iovation.com
-    x-ownership-note: 'iovation was acquired by TransUnion in 2018 and its device products were rebranded TruValidate; the SDK READMEs state it directly — "We have united these solutions under the TransUnion TruValidate brand."'
-    tags:
-      - Fraud Prevention
-      - Device Intelligence
-      - Identity
-      - Authentication
-    properties:
-      - type: SourceCode
-        url: https://github.com/iovation/deviceprint-SDK-iOS
-      - type: SourceCode
-        url: https://github.com/iovation/deviceprint-SDK-Android
+- aid: transunion:global-developer-portal
+  name: TransUnion Global Developer Portal
+  description: >-
+    TransUnion's API products for credit reporting, identity verification, fraud prevention and consumer
+    risk decisioning. Access requires a business agreement with TransUnion and credentials issued by an
+    account manager; no machine-readable contract is published. The historical portal host developer.transunion.com
+    no longer resolves (NXDOMAIN, checked 2026-08-13), so the live technical surface is Client Technical
+    Services.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://techservices.transunion.com/
+  x-base-url-note: >-
+    No baseURL recorded. developer.transunion.com — carried here since 2026-05 — is NXDOMAIN as of 2026-08-13,
+    and no public TransUnion document states a production API host for these products. Recorded as missing
+    rather than guessed from the domain.
+  tags:
+  - Credit Reporting
+  - Identity
+  - Fraud Prevention
+  - Risk Decisioning
+  - Consumer Insights
+  properties:
+  - type: Documentation
+    url: https://techservices.transunion.com/doc-repository
+  - type: Solutions
+    url: https://www.transunion.com/business
+- aid: transunion:truvalidate-device-risk
+  name: TransUnion TruValidate Device Risk
+  description: >-
+    Device recognition and fraud signals, formerly iovation FraudForce. Mobile SDKs collect a device "blackbox"
+    that is submitted to a risk check from your servers. The API host api.iovation.com is behind mutual
+    TLS — it answers "Unauthorized - missing/invalid client certificate" to any anonymous request — and
+    no OpenAPI is published.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://github.com/iovation
+  baseURL: https://api.iovation.com
+  x-ownership-note: >-
+    iovation was acquired by TransUnion in 2018 and its device products were rebranded TruValidate; the
+    SDK READMEs state it directly — "We have united these solutions under the TransUnion TruValidate brand."
+  tags:
+  - Fraud Prevention
+  - Device Intelligence
+  - Identity
+  - Authentication
+  properties:
+  - type: SourceCode
+    url: https://github.com/iovation/deviceprint-SDK-iOS
+  - type: SourceCode
+    url: https://github.com/iovation/deviceprint-SDK-Android
+- aid: transunion:transunion-authentication-service-api
+  name: TransUnion Authentication Service API
+  description: >-
+    This API endpoint uses the following data elements ('required' elements identified) in the REQUEST
+    to create a SIP Identity header. Based on the HTTP header of 'Content-Type' (e.g. json, text/plain),
+    the request body (data) can include various data elements. Please refer to the examples for more details.
+
+
+    Three different API entry points are defined for SIP Identity header creation:
+      * Accepts requests in JSON format and produces responses in JSON format
+      * Accepts text messages in text/plain and produces responses in JSON format
+      * Accepts text messages in text/plain and produces responses in text/plain format
+  humanURL: https://neustar.github.io/tcs-apis/
+  baseURL: https://{hostname}:{port}/{optionalRoutingPath}
+  tags:
+  - Authentication Service
+  properties:
+  - type: OpenAPI
+    url: openapi/transunion-authentication-service-api-openapi.yml
+  - type: Documentation
+    url: https://neustar.github.io/tcs-apis/
+  - type: APIReference
+    url: https://neustar.github.io/tcs-apis/
+  - type: SourceCode
+    url: https://github.com/neustar/tcs-apis
+  - type: Solutions
+    url: >-
+      https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
+- aid: transunion:transunion-signing-api
+  name: TransUnion Signing API
+  description: >-
+    Used to construct a PASSporT "shaken" JSON Web Token, a PASSporT "div" JSON Web Token or a PASSporT
+    "rph" JSON Web Token.  Also, referred to as the Secure Telephone Identity Authentication Service (STI-AS).
+  humanURL: https://neustar.github.io/tcs-apis/
+  baseURL: https://{hostname}:{port}/{optionalRoutingPath}
+  tags:
+  - signing
+  properties:
+  - type: OpenAPI
+    url: openapi/transunion-signing-api-openapi.yml
+  - type: Documentation
+    url: https://neustar.github.io/tcs-apis/
+  - type: APIReference
+    url: https://neustar.github.io/tcs-apis/
+  - type: SourceCode
+    url: https://github.com/neustar/tcs-apis
+  - type: Solutions
+    url: >-
+      https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
+- aid: transunion:transunion-verification-api
+  name: TransUnion Verification API
+  description: >-
+    Used to verify one or more PASSporT JSON Web Tokens (or Identity headers).  Also, referred to as the
+    STI Verification Service (STI-VS).
+  humanURL: https://neustar.github.io/tcs-apis/
+  baseURL: https://{hostname}:{port}/{optionalRoutingPath}
+  tags:
+  - verification
+  properties:
+  - type: OpenAPI
+    url: openapi/transunion-verification-api-openapi.yml
+  - type: Documentation
+    url: https://neustar.github.io/tcs-apis/
+  - type: APIReference
+    url: https://neustar.github.io/tcs-apis/
+  - type: SourceCode
+    url: https://github.com/neustar/tcs-apis
+  - type: Solutions
+    url: >-
+      https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
+- aid: transunion:transunion-verification-service-api
+  name: TransUnion Verification Service API
+  description: >-
+    Currently, a RESTful API client is required to provide an 'apiKey' query parameter with a pre-provisioned
+    value to access API calls that are restricted. If the 'apiKey' parameter is not specified, the client
+    IP address may be used as the backup authentication mechanism if pre-provisioned.
+
+
+    Three different API entry points are defined for SIP Identity header verification:
+      * Accepts requests in JSON format and produces responses in JSON format
+      * Accepts text messages and produces responses in JSON format
+      * Accepts text messages and produces responses in SIP format
+  humanURL: https://neustar.github.io/tcs-apis/
+  baseURL: https://{hostname}:{port}/{optionalRoutingPath}
+  tags:
+  - Verification Service
+  properties:
+  - type: OpenAPI
+    url: openapi/transunion-verification-service-api-openapi.yml
+  - type: Documentation
+    url: https://neustar.github.io/tcs-apis/
+  - type: APIReference
+    url: https://neustar.github.io/tcs-apis/
+  - type: SourceCode
+    url: https://github.com/neustar/tcs-apis
+  - type: Solutions
+    url: >-
+      https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
+- aid: transunion:transunion-verification-service-with-call-validation-treatment-cvt-api
+  name: TransUnion Verification Service with Call Validation Treatment (CVT) API
+  description: >-
+    The Verification Service with Call Validation Treatment (CVT) API from TransUnion — 1 operation(s)
+    for verification service with call validation treatment (cvt).
+  humanURL: https://neustar.github.io/tcs-apis/
+  baseURL: https://{hostname}:{port}/{optionalRoutingPath}
+  tags:
+  - Verification Service with Call Validation Treatment (CVT)
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/transunion-verification-service-with-call-validation-treatment-cvt-api-openapi.yml
+  - type: Documentation
+    url: https://neustar.github.io/tcs-apis/
+  - type: APIReference
+    url: https://neustar.github.io/tcs-apis/
+  - type: SourceCode
+    url: https://github.com/neustar/tcs-apis
+  - type: Solutions
+    url: >-
+      https://www.transunion.com/solution/trucontact/branded-communications/trusted-call-solutions
 common:
+  - type: Overlay
+    url: overlays/transunion-trucontact-tcs-shaken-overlay.yaml
+  - type: Overlay
+    url: overlays/transunion-trucontact-3gpp-call-authentication-overlay.yaml
   - type: DomainSecurity
     url: security/transunion-domain-security.yml
   - type: VulnerabilityDisclosure
