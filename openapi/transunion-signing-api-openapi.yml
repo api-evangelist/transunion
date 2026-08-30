@@ -1,0 +1,278 @@
+openapi: 3.2.0
+info:
+  x-logo:
+    url: https://raw.githubusercontent.com/neustar/tcs-apis/main/docs/newNeustarLogo.jpeg
+    altText: 3GPP Authentication & Verification Service APIs
+  title: 3GPP-based Call Authentication Signing API
+  description: 'Note: The above download will output the 3GPP-based Call Authentication APIs in OpenAPI format.<br><br>Definition of the Application Server HTTP messages and data types for signing and verification using the Ms reference point. These APIs are designed to be compliant with the referenced 3GPP specification, while also including several optional enhancements.  Such enhancements may or may not be brought back into the 3GPP CT1 working group for consideration.'
+  contact: {}
+  version: 1.0, TS 24.229, Release 17.10.0
+servers:
+- url: http://localhost:8080/stir/v1
+  description: signing resource URI
+tags:
+- name: signing
+  description: Used to construct a PASSporT "shaken" JSON Web Token, a PASSporT "div" JSON Web Token or a PASSporT "rph" JSON Web Token.  Also, referred to as the Secure Telephone Identity Authentication Service (STI-AS).
+paths:
+  /signing:
+    post:
+      tags:
+      - signing
+      summary: Signing (STI-AS) Request
+      operationId: signingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signingRequest'
+      x-code-samples:
+      - lang: curl
+        label: SHAKEN
+        source: "Request: \n{\n  \"signingRequest\": {\n    \"attest\": \"A\",\n    \"orig\": {\n        \"tn\": \"17035550001\"\n    },\n    \"dest\": {\n        \"tn\": [\n            \"15715550000\"\n        ]\n    },\n    \"iat\": 1671467335,\n    \"origid\": \"2088448c-718e-4930-be5d-0ec9b25d2f00\"\n  }\n}\n\nResponse: \n{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9jYS1jbXMubmV1c3RhcmxhYi5iaXovY2NpZC9hdXRobi92Mi9jZXJ0cy8xMTAwMS4xMDAwNSJ9.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjcxNjUwODc0LCJvcmlnIjp7InRuIjoiMTcwMzU1NTAwMDEifSwib3JpZ2lkIjoiMjA4ODQ0OGMtNzE4ZS00OTMwLWJlNWQtMGVjOWIyNWQyZjAwIn0.U-W6ksO2fNPzGAFVGe8iPHSONhz1CbUd4uy2UVjVH4IWnouTKnwkIp92gNVClktzmapE0puRV-XxpFEfuIvldA;info=<https://ca-cms.neustarlab.biz/ccid/authn/v2/certs/11001.10005>;alg=ES256;ppt=\\\"shaken\\\"\"\n  }\n}\n"
+      - lang: curl
+        label: SHAKEN w/PPT
+        source: "Request: \n{\n  \"signingRequest\": {\n    \"ppt\": \"shaken\"\n    \"attest\": \"A\",\n    \"orig\": {\n        \"uri\": \"sip:john@asterisk.com\"\n    },\n    \"dest\": {\n        \"uri\": [\n            \"sip:jack@asterisk.com\"\n        ]\n    },\n    \"iat\": 1671467335,\n    \"origid\": \"2088448c-718e-4930-be5d-0ec9b25d2f00\"\n  }\n}\nResponse: \n{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9jYS1jbXMubmV1c3RhcmxhYi5iaXovY2NpZC9hdXRobi92Mi9jZXJ0cy8xMTAwMS4xMDAwNSJ9.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjcxNjUwODc0LCJvcmlnIjp7InRuIjoiMTcwMzU1NTAwMDEifSwib3JpZ2lkIjoiMjA4ODQ0OGMtNzE4ZS00OTMwLWJlNWQtMGVjOWIyNWQyZjAwIn0.U-W6ksO2fNPzGAFVGe8iPHSONhz1CbUd4uy2UVjVH4IWnouTKnwkIp92gNVClktzmapE0puRV-XxpFEfuIvldA;info=<https://ca-cms.neustarlab.biz/ccid/authn/v2/certs/11001.10005>;alg=ES256;ppt=\\\"shaken\\\"\"\n  }\n}\n"
+      - lang: curl
+        label: DIV
+        source: "Request: \n{\n  \"signingRequest\": {\n    \"ppt\": \"div\",\n    \"orig\": {\n        \"tn\": \"17035550001\"\n    },\n    \"dest\": {\n        \"tn\": [\n            \"17325551212\"\n        ]\n    },\n    \"div\": {\n        \"tn\": \"15715550000\"\n    },\n    \"iat\": 1671466865\n  }\n}\nResponse: \n{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6ImRpdiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9jYS1jbXMubmV1c3RhcmxhYi5iaXovY2NpZC9hdXRobi92Mi9jZXJ0cy8xMTAwMS4xMDAwNSJ9.eyJkZXN0Ijp7InRuIjpbIjEyMTU1NTU1MTIxMiJdfSwiZGl2Ijp7InRuIjoiMTU3MTU1NTAwMDAifSwiaWF0IjoxNjcxNjUwOTU1LCJvcmlnIjp7InRuIjoiMTcwMzU1NTAwMDEifX0.G2mfq29ne3RdHgLzeCMXrMW6qmQDYGxtaaB6kWMkS2AlVjYWJauwszIUSL8Wqu5hE7lHSoygbUuyYEyE5iXzYQ;info=<https://ca-cms.neustarlab.biz/ccid/authn/v2/certs/11001.10005>;alg=ES256;ppt=\\\"div\\\"\"\n  }\n}\n"
+      - lang: curl
+        label: DIV History-Info Header
+        source: "Request:\n{\n  \"signingRequest\": {\n    \"ppt\": \"div\",\n    \"orig\": {\n        \"tn\": \"17035550001\"\n    },\n    \"dest\": {\n        \"tn\": [\n            \"17325551212\"\n        ]\n    },\n    \"div\": {\n        \"tn\": \"15715550000\",\n        \"hi\": \"1.1\"\n    },\n    \"iat\": 1671466865\n  }\n}\nResponse: \n{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6ImRpdiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9jYS1jbXMubmV1c3RhcmxhYi5iaXovY2NpZC9hdXRobi92Mi9jZXJ0cy8xMTAwMS4xMDAwNSJ9.eyJkZXN0Ijp7InRuIjpbIjEyMTU1NTU1MTIxMiJdfSwiZGl2Ijp7InRuIjoiMTU3MTU1NTAwMDAifSwiaWF0IjoxNjcxNjUxMDgxLCJvcmlnIjp7InRuIjoiMTcwMzU1NTAwMDEifX0.GiD-WEUJp4NjxHhrBfxfcRrdzqfxE0s4fZf1NT_DLSnmj_Iqklew4FPmittXbKTRUlREa-MGu3OoZAVjQajs1Q;info=<https://ca-cms.neustarlab.biz/ccid/authn/v2/certs/11001.10005>;alg=ES256;ppt=\\\"div\\\"\"\n  }\n}\n"
+      - lang: curl
+        label: RPH
+        source: "Request: \n{\n  \"signingRequest\": {\n    \"ppt\": \"rph\",\n    \"orig\": {\n        \"tn\": \"17035550001\"\n    },\n    \"dest\": {\n        \"tn\": [\n            \"15715550000\"\n        ]\n    },\n    \"iat\": 1671467383,\n    \"rph\":{\"auth\":[\"ets.0\",\"wps.0\"]}\n  }\n}\nResponse: \n{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6InJwaCIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9jYS1jbXMubmV1c3RhcmxhYi5iaXovY2NpZC9hdXRobi92Mi9jZXJ0cy8xMTAxNS4xMDAwMSJ9.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2NzE3MzYwMjIsIm9yaWciOnsidG4iOiIxNzAzNTU1MDAwMSJ9LCJycGgiOnsiYXV0aCI6WyJlc25ldC4xIl19fQ.ldwVhEH5K59KYEIge65wzxrfflAUxpzT7pqW7zHUrUllRdezTY28vUXcslvUrU4N2vUmuLxje4uwaeQ2ptnrdw;info=<https://ca-cms.neustarlab.biz/ccid/authn/v2/certs/11015.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n  }\n}\n"
+      - lang: curl
+        label: RPH-SPH
+        source: "Request:\n{\n  \"signingRequest\": {\n    \"ppt\": \"rph\",\n    \"orig\": {\n        \"tn\": \"17035550001\"\n    },\n    \"dest\": {\n        \"tn\": [\n            \"15715550000\"\n        ]\n    },\n    \"iat\": 1671467383,\n    \"rph\": {\n        \"auth\": [\n            \"esnet.1\"\n        ]\n    },\n    \"sph\": \"psap-callback\"\n  }\n}\nResponse: \n{\n  \"signingResponse\": {\n    \"identityHeader\": \"eyJhbGciOiJFUzI1NiIsInBwdCI6InJwaCIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9jYS1jbXMubmV1c3RhcmxhYi5iaXovY2NpZC9hdXRobi92Mi9jZXJ0cy8xMTAxNS4xMDAwMSJ9.eyJkZXN0Ijp7InRuIjpbIjE1NzE1NTUwMDAwIl19LCJpYXQiOjE2NzE3MzU5MjgsIm9yaWciOnsidG4iOiIxNzAzNTU1MDAwMSJ9LCJycGgiOnsiYXV0aCI6WyJlc25ldC4xIl19LCJzcGgiOiJwc2FwLWNhbGxiYWNrIn0.DB8x02L707cTLZykuvBRfNxNByUbABSfFwRSPqoYHFPtU9Q8j6_j7owNyYpCcj4ebyzj0XquhbFowopA2w7uPA;info=<https://ca-cms.neustarlab.biz/ccid/authn/v2/certs/11015.10001>;alg=ES256;ppt=\\\"rph\\\"\"\n  }\n}\n"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/signingResponse'
+              examples:
+                shaken:
+                  value:
+                    signingResponse:
+                      identityHeader: eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt="shaken"
+                      requestId: '12378'
+                div:
+                  value:
+                    signingResponse:
+                      identityHeader: kjytrfvbOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt="div"
+                      requestId: '12378'
+                rph:
+                  value:
+                    signingResponse:
+                      identityHeader: mnbvfrewqaJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL05FVS1DMDJGRzJLN01MODU6ODA4MC9jY2lkL2F1dGhuL3YyL2NlcnRzLzExMDAxLjEwMDAxIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxNTcxNTU1MDAwMCJdfSwiaWF0IjoxNjQ5NTM2NTMxLCJvcmlnIjp7InVyaSI6InNpcDphbGljZUBleGFtcGxlLmNvbSJ9LCJvcmlnaWQiOiJjODcyNDU3NS1iNzgxLTExZWMtYjU3NC0wMjQyYWMxMTAwMDIifQ.piGZhwqwWaKM4cOcrDTMeFKOY5UlekVDlKZTxlge4x0ERnSe9uW4400gaoVFdpGiTOzoCt9QdSfwLV_hcmvT0g;info=<http://NEU-C02FG2K7ML85:8080/ccid/authn/v2/certs/11001.10001>;alg=ES256;ppt="rph"
+                      requestId: '12378'
+        '400':
+          description: Service error in processing request
+          content:
+            application/json:
+              examples:
+                missingRequestBody:
+                  summary: Missing Request Body
+                  value:
+                    error: Missing Request body
+                missingMandatoryParameter:
+                  summary: Missing Mandatory Parameter
+                  value:
+                    error: Missing Mandatory Parameter
+                invalidParameterValue:
+                  summary: Invalid Parameter Value
+                  value:
+                    error: Invalid Parameter Value
+                failedToParseMessageBody:
+                  summary: Failed To Parse Message Body
+                  value:
+                    error: Failed To Parse Message Body
+        '406':
+          description: Service error in processing request
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Requested response body type is not supported
+                    description: The request could not be processed due to a not supported message body format
+        '404':
+          description: Service error in processing request
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Requested resource not found
+                    description: The request could not be processed due to no resource available related to the Request-URI
+        '415':
+          description: Service error in processing request
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unsupported request body type
+                    description: The request could not be processed due to not supported message body
+        '411':
+          description: Service error in processing request
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing mandatory Content-Length headers
+                    description: The request could not be processed due to a missing Content-Length header
+        '405':
+          description: Policy error in processing request
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Method not allowed
+                    description: The resource was invoked with unsupported operation
+        '500':
+          description: Policy error in processing request
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+                    description: The request failed due to internal error
+components:
+  schemas:
+    signingResponse:
+      title: signingResponse
+      properties:
+        signingResponse:
+          description: JSON structure of the signing response
+          type: object
+          required:
+          - identityHeader
+          properties:
+            identityHeader:
+              type: string
+              description: Identity header field value according to RFC 8224. This string cannot be NULL
+            requestId:
+              type: string
+              description: An opaque identifier that is reflected from the request to support troubleshooting and fault analysis
+    signingRequest:
+      title: signingRequest
+      properties:
+        signingRequest:
+          description: JSON structure of the signing request
+          type: object
+          required:
+          - dest
+          - iat
+          - orig
+          properties:
+            ppt:
+              type: string
+              example: shaken, div or rph
+              description: Optional field. If it's empty, then request is considered as "shaken" request. If "div", then request is considered as "divSigning" request and if "rph", then request is considered as "rphSigning" request
+            attest:
+              type: string
+              example: A , B or C
+              description: Identifying the relation between the service provider attesting the identity and the subscriber
+            dest:
+              type: object
+              description: Identifying the called user taken from the To header field for a "shaken" or "rph" PASSporT, and from the Request-URI after retargeting for a "div" PASSporT. Either 'tn' or 'uri' must be supplied
+              properties:
+                tn:
+                  type: array
+                  description: Allowed characters as for local-number-digits and global-number-digits. The number must be in canonical form. Accepted input format (note that a server implementation may support more formats) - <ol><li>“tn”:”17035550001”</li></ol>
+                  items:
+                    type: string
+                    example: '12155551213'
+                uri:
+                  type: array
+                  description: Used if the "orig" or "dest" is given as a URI. Accepted input formats (note that a server implementation may support more formats) - <ol><li>“uri”:"sip:john&#64;asterisk&#46;com"</li> <li>“uri”:"sips:john&#64;asterisk&#46;com"</li></ol>
+                  items:
+                    type: string
+                    example: john@asterisk.com
+            iat:
+              type: integer
+              description: Time since 1 January 1970 in Numeric Date format
+              example: 1664199282
+            orig:
+              type: object
+              description: Identifying the calling user. Either 'tn' or 'uri' must be supplied
+              properties:
+                tn:
+                  type: string
+                  description: Allowed characters as for local-number-digits and global-number-digits. The number must be in canonical form. Accepted input format (note that a server implementation may support more formats) - <ol><li>“tn”:”17035550001”</li></ol>
+                  example: '12155551211'
+                uri:
+                  type: string
+                  description: Used if the "orig" or "dest" is given as a URI. Accepted input formats (note that a server implementation may support more formats)  - <ol><li>“uri”:"sip:john&#64;asterisk&#46;com"</li> <li>“uri”:"sips:john&#64;asterisk&#46;com"</li></ol>
+                  example: alice@asterisk.com
+            origid:
+              type: string
+              description: An opaque origination identifier in the recommended format of a Universally Unique Identifier (UUID)
+              example: 123e4567-e89b-12d3-a456-426655440000
+            rph:
+              type: object
+              description: Applicable only if "ppt" = "rph". Array of strings that correspond to the r-values indicated in the SIP Resource-Priority header field. Contains assertion of the priority level of the user to be used for a given communication session
+              properties:
+                auth:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - esnet.0
+            sph:
+              type: string
+              description: Applicable only if "ppt" = "rph". Contains header field value "psap-callback" of the SIP Priority header field
+              example: psap-callback
+            div:
+              type: object
+              description: Applicable only if "ppt" = "div". Identifying the diverting user; i.e., the user identified in the Request-URI before retargeting
+              properties:
+                tn:
+                  type: string
+                  description: Allowed characters as for local-number-digits and global-number-digits. The number needs to be in canonical form.  See “orig” or “dest” above for accepted format
+                  example: '121555551212'
+                uri:
+                  type: string
+                  description: Used if the "orig" or "dest" is given in a SIP URI.  See “orig” or “dest” above for accepted formats
+                  example: fred@example.com
+                hi:
+                  type: string
+                  description: The "index" header field parameter identifying the diverting user in the History-Info header field.  For example, “1.1.1”
+                  example: 1.1.1
+            profileId:
+              type: string
+              description: Value may be used by the Authentication Service to make certain decisions regarding processing of a signing request
+              example: Profile-1234
+            requestId:
+              type: string
+              description: An opaque identifier that, when provided, is reflected in the response to support troubleshooting and fault analysis
+              example: '12378'
