@@ -106,6 +106,8 @@ apis:
   humanURL: https://neustar.github.io/tcs-apis/
   baseURL: https://{hostname}:{port}/{optionalRoutingPath}
   tags:
+  - AuthenticationService
+  tags_raw:
   - Authentication Service
   properties:
   - type: OpenAPI
@@ -127,6 +129,8 @@ apis:
   humanURL: https://neustar.github.io/tcs-apis/
   baseURL: https://{hostname}:{port}/{optionalRoutingPath}
   tags:
+  - Signing
+  tags_raw:
   - signing
   properties:
   - type: OpenAPI
@@ -148,6 +152,8 @@ apis:
   humanURL: https://neustar.github.io/tcs-apis/
   baseURL: https://{hostname}:{port}/{optionalRoutingPath}
   tags:
+  - Verification
+  tags_raw:
   - verification
   properties:
   - type: OpenAPI
@@ -196,7 +202,8 @@ apis:
     for verification service with call validation treatment (cvt).
   humanURL: https://neustar.github.io/tcs-apis/
   baseURL: https://{hostname}:{port}/{optionalRoutingPath}
-  tags:
+  tags: []
+  tags_raw:
   - Verification Service with Call Validation Treatment (CVT)
   properties:
   - type: OpenAPI
