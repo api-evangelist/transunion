@@ -4,9 +4,11 @@ info:
     url: https://raw.githubusercontent.com/neustar/tcs-apis/main/docs/newNeustarLogo.jpeg
     altText: STIR/SHAKEN Authentication & Verification Service APIs
   version: 1.0.0
-  title: STIR/SHAKEN Authentication & Verification Service Verification Service with Call Validation Treatment (CVT) API
+  title: STIR/SHAKEN Authentication & Verification Service…
   summary: null
-  description: "# Overview\n  Secure Telephone Identity Revisited (STIR) and the Signature-based Handling of Asserted information using toKENs (SHAKEN) framework have already become regulatory mandates in both the United States and Canada for caller identity authentication.  These IETF and ATIS standards define how to securely compute, transit and verify SIP Identity headers through an Authentication Service (AS) and Verification Service (VS).\n\n  Since their initial implementation, STIR and SHAKEN standards have been (and continue to be) extended in multiple ways.  Additionally, the AS and VS can support supplemental features including, but not limited to telephone number ownership validation, subscriber-based policy management and robocall analytics.\n  \n  The AS and VS implement call authentication and related functions ideally through flexible, extensible, robust and standardized Application Program Interfaces (APIs).  Many initial implementations of the SHAKEN framework employ RESTful API clients, but these are constrained to only supporting base functionality.  The STIR/SHAKEN API project promotes collaboration to expand functionality, while hopefully also achieving industry alignment amongst various RESTful API implementations and/or applicable standards, where possible.\n\n  There are generally two ways to authenticate a RESTful API client - 'apiKey' or 'coming from a whitelisted client IP'.  Both are initially supported in the STIR/SHAKEN API project.  If a RESTful API client chooses to use 'apiKey' for authentication, an 'apiKey' query parameter, with a pre-provisioned value, is validated to access API calls that are restricted. If the 'apiKey' parameter is not specified, a pre-provisioned client IP address may be used as the backup authentication mechanism.  The server first checks for availability of an 'apiKey' in the query parameter and if it doesn't find one, it tries to authenticate via the client IP address.\n\n  The primary objective of the STIR/SHAKEN API project is to foster broad and open industry collaboration amongst developers and implementers of (or those desiring to implement) RESTful APIs for timely and extensible support of evolving caller identity authentication standards, including supplemental feature support as required.  The core set of ATIS SHAKEN standards supported in this project, including their underlying and/or referenced IETF and 3GPP standards, are:\n  * ATIS-1000074, “SHAKEN”\n  * ATIS-1000078, “National Security / Emergency Preparedness Priority Service SIP RPH Signing and Verification using PASSporTs”\n  * ATIS-1000080, “SHAKEN: Governance Model and Certificate Management”\n  * ATIS-1000084, “Operational and Management Considerations for SHAKEN STI Certification Authorities and Policy Administrators”\n  * ATIS-1000085, “SHAKEN: SHAKEN Support of “div” PASSporT”\n  * ATIS-1000092, “SHAKEN: Delegate Certificates\n  * ATIS-1000093, “Toll-Free Numbers in the SHAKEN Framework”\n  * ATIS-1000094, “SHAKEN: Calling Name and Rich Call Data Handling Procedures”\n  * ATIS-1000098, “SIP Resource-Priority Header and Priority Header Signing in Support of Emergency Calling”\n\nLooking forward to your support, feedback and contributions.\n"
+  description: '# Overview
+
+    Secure Telephone Identity Revisited (STIR) and the Signature-based Handling of Asserted information using toKENs (SHAKEN) framework have already become regulatory mandates in both the United States and Canada for caller identity authentication.'
 servers:
 - url: https://{hostname}:{port}/{optionalRoutingPath}
   description: https
@@ -17,9 +19,7 @@ paths:
     post:
       tags:
       - Verification Service with Call Validation Treatment (CVT)
-      description: 'This API entry point accepts requests and produces responses in JSON Format.
-
-        '
+      description: This API entry point accepts requests and produces responses in JSON Format.
       summary: Request & Response in JSON Format
       operationId: verify/identitycvt
       parameters:
@@ -2092,115 +2092,6 @@ paths:
                       reason: Internal server error
 components:
   schemas:
-    VerifyIdentity:
-      required:
-      - from
-      - to
-      - identity
-      type: object
-      properties:
-        from:
-          type: string
-          example: Alice <sip:alice@example.com>
-          description: \"From\" header value from SIP INVITE message
-        to:
-          type: string
-          example: Bob <sip:5715550000@example.com>
-          description: \"To\" header value from SIP INVITE message
-        identity:
-          type: array
-          example: Bob <sip:5715550000@example.com>
-          description: A list of SIP Identity values to be verified
-        diversion:
-          type: array
-          description: A list of 'Diversion' header values from SIP INVITE message. If specified, must be one as specified in RFC5806 Section 4
-        resource_priority:
-          type: array
-          description: A list of 'Resource-Priority' header values from SIP INVITE message. If specified, must be one as specified in RFC4412 Section 3.1
-        verstat:
-          type: boolean
-          description: Flag for returning verstat value after SIP Identity values are verified. If specified, must be true or false
-          example: X-REQUEST-ID-12345
-        identity_info:
-          type: boolean
-          description: Flag for returning information related to SIP Identity values verified. If specified, must be true or false
-        request_id:
-          type: string
-          description: Client supplied request identifier for tracking purpose. If not null, it will be returned back in the response object
-          example: X-REQUEST-ID-12345
-        status:
-          type: string
-          example: Bob <sip:7035550000@example.com>;reason=away
-          description: Verification status requirement. If specified, must be 'none', 'partial' or 'all'
-        date:
-          type: string
-          description: Date header value from SIP INVITE message. If specified, must be in RFC1123 format
-          example: Fri, 16 Apr 2021 02:56:51 GMT
-        pai:
-          type: array
-          description: A list of 'P-Asserted-Identity' header values from SIP INVITE message. If specified, must be one as specified in RFC 3325 Section 9.1
-        finger_print:
-          type: array
-          description: A list of SDP 'a=fingerprint' attribute values from SIP INVITE message. If specified, must be one as specified in RFC 3325 Section 9.1
-          items:
-            type: object
-            properties:
-              algorithm:
-                type: string
-                description: Algorithm name of a SDP 'a=fingerprint' attribute from SIP INVITE message. Cannot be null or empty
-                example: SHA-1
-              digest:
-                type: string
-                description: Digest value of a SDP 'a=fingerprint' attribute from SIP INVITE message. Cannot be null or empty
-                example: 36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7
-        orig_cc:
-          type: array
-          description: Default country codes for the originator telephone number. If specified, must be a valid country code
-          example:
-          - '1'
-          - '44'
-        dest_cc:
-          type: string
-          description: Default country code for the destination telephone number. If specified, must be a valid country code
-          example: '1'
-        cnam:
-          type: boolean
-          description: Flag for performing CNAM lookup. If specified, must be true or false
-        robocall:
-          type: boolean
-          description: Flag for returning Robocall Call Insight data. If specified, must be true or false
-        call_info:
-          type: string
-          description: Optional "Call-Info" header value for extracting "crn" and "jcard_uri" values
-          example: <http://example.com/alice.json>;purpose=jcard;call-reason=Travel
-        caller_reason:
-          type: string
-          description: Optional "crn" value specified by RCD PASSporT extension
-          example: Travel
-        alt_present_number:
-          type: string
-          description: Optional "apn" value specified by RCD PASSporT extension
-          example: Disney <sip:+18005550000@example.com>
-        caller_name:
-          type: string
-          description: Optional "nam" value specified by RCD PASSporT extension
-          example: Alice Liddell
-        jcard:
-          type: string
-          description: Optional JSON string for "jcd" value specified by RCD PASSporT extension
-          example: '["vcard",[["version",{},"text","4.0"],["fn",{},"text","Alice Liddell"],[ "email",{},"text","alice@example.com"]]]'
-        jcard_uri:
-          type: string
-          example: cid:123456
-          description: Optional "jcl" value specified by RCD PASSporT extension
-        rcd_issuer:
-          type: string
-          example: Disney, Inc.
-          description: Optional "iss" value specified by RCD PASSporT extension
-        rcd_integrity:
-          type: boolean
-          example: true
-          description: Optional boolean flag for generating "rcdi" value. It's the flag for generating RCD PASSporT integrity hash. If specified, must be either true or false, with default as true
     VerifyResponse:
       type: object
       properties:
@@ -2376,3 +2267,112 @@ components:
                   key:
                     type: string
                     description: any key value pair
+    VerifyIdentity:
+      required:
+      - from
+      - to
+      - identity
+      type: object
+      properties:
+        from:
+          type: string
+          example: Alice <sip:alice@example.com>
+          description: \"From\" header value from SIP INVITE message
+        to:
+          type: string
+          example: Bob <sip:5715550000@example.com>
+          description: \"To\" header value from SIP INVITE message
+        identity:
+          type: array
+          example: Bob <sip:5715550000@example.com>
+          description: A list of SIP Identity values to be verified
+        diversion:
+          type: array
+          description: A list of 'Diversion' header values from SIP INVITE message. If specified, must be one as specified in RFC5806 Section 4
+        resource_priority:
+          type: array
+          description: A list of 'Resource-Priority' header values from SIP INVITE message. If specified, must be one as specified in RFC4412 Section 3.1
+        verstat:
+          type: boolean
+          description: Flag for returning verstat value after SIP Identity values are verified. If specified, must be true or false
+          example: X-REQUEST-ID-12345
+        identity_info:
+          type: boolean
+          description: Flag for returning information related to SIP Identity values verified. If specified, must be true or false
+        request_id:
+          type: string
+          description: Client supplied request identifier for tracking purpose. If not null, it will be returned back in the response object
+          example: X-REQUEST-ID-12345
+        status:
+          type: string
+          example: Bob <sip:7035550000@example.com>;reason=away
+          description: Verification status requirement. If specified, must be 'none', 'partial' or 'all'
+        date:
+          type: string
+          description: Date header value from SIP INVITE message. If specified, must be in RFC1123 format
+          example: Fri, 16 Apr 2021 02:56:51 GMT
+        pai:
+          type: array
+          description: A list of 'P-Asserted-Identity' header values from SIP INVITE message. If specified, must be one as specified in RFC 3325 Section 9.1
+        finger_print:
+          type: array
+          description: A list of SDP 'a=fingerprint' attribute values from SIP INVITE message. If specified, must be one as specified in RFC 3325 Section 9.1
+          items:
+            type: object
+            properties:
+              algorithm:
+                type: string
+                description: Algorithm name of a SDP 'a=fingerprint' attribute from SIP INVITE message. Cannot be null or empty
+                example: SHA-1
+              digest:
+                type: string
+                description: Digest value of a SDP 'a=fingerprint' attribute from SIP INVITE message. Cannot be null or empty
+                example: 36:3B:AE:12:95:95:F5:97:2D:F7:E0:84:FE:CD:F1:BC:AD:7A:70:64:F7:E7:4F:7E:A6:02:06:0E:37:54:CF:F7
+        orig_cc:
+          type: array
+          description: Default country codes for the originator telephone number. If specified, must be a valid country code
+          example:
+          - '1'
+          - '44'
+        dest_cc:
+          type: string
+          description: Default country code for the destination telephone number. If specified, must be a valid country code
+          example: '1'
+        cnam:
+          type: boolean
+          description: Flag for performing CNAM lookup. If specified, must be true or false
+        robocall:
+          type: boolean
+          description: Flag for returning Robocall Call Insight data. If specified, must be true or false
+        call_info:
+          type: string
+          description: Optional "Call-Info" header value for extracting "crn" and "jcard_uri" values
+          example: <http://example.com/alice.json>;purpose=jcard;call-reason=Travel
+        caller_reason:
+          type: string
+          description: Optional "crn" value specified by RCD PASSporT extension
+          example: Travel
+        alt_present_number:
+          type: string
+          description: Optional "apn" value specified by RCD PASSporT extension
+          example: Disney <sip:+18005550000@example.com>
+        caller_name:
+          type: string
+          description: Optional "nam" value specified by RCD PASSporT extension
+          example: Alice Liddell
+        jcard:
+          type: string
+          description: Optional JSON string for "jcd" value specified by RCD PASSporT extension
+          example: '["vcard",[["version",{},"text","4.0"],["fn",{},"text","Alice Liddell"],[ "email",{},"text","alice@example.com"]]]'
+        jcard_uri:
+          type: string
+          example: cid:123456
+          description: Optional "jcl" value specified by RCD PASSporT extension
+        rcd_issuer:
+          type: string
+          example: Disney, Inc.
+          description: Optional "iss" value specified by RCD PASSporT extension
+        rcd_integrity:
+          type: boolean
+          example: true
+          description: Optional boolean flag for generating "rcdi" value. It's the flag for generating RCD PASSporT integrity hash. If specified, must be either true or false, with default as true

@@ -1,0 +1,30 @@
+{
+  "provider": "transunion",
+  "sources": [
+    "_original/transunion-trucontact-3gpp-call-authentication-openapi.yml",
+    "_original/transunion-trucontact-tcs-shaken-openapi.yml"
+  ],
+  "outputs": [
+    "transunion-signing-api-openapi.yml",
+    "transunion-verification-api-openapi.yml",
+    "transunion-authentication-service-api-openapi.yml",
+    "transunion-verification-service-api-openapi.yml",
+    "transunion-verification-service-with-call-validation-treatment-cvt-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "transunion-trucontact-3gpp-call-authentication-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "transunion-trucontact-tcs-shaken-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "transunion-authentication-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "transunion-signing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "transunion-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "transunion-verification-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "transunion-verification-service-with-call-validation-treatment-cvt-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

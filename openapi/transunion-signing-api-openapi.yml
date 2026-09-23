@@ -4,20 +4,23 @@ info:
     url: https://raw.githubusercontent.com/neustar/tcs-apis/main/docs/newNeustarLogo.jpeg
     altText: 3GPP Authentication & Verification Service APIs
   title: 3GPP-based Call Authentication Signing API
-  description: 'Note: The above download will output the 3GPP-based Call Authentication APIs in OpenAPI format.<br><br>Definition of the Application Server HTTP messages and data types for signing and verification using the Ms reference point. These APIs are designed to be compliant with the referenced 3GPP specification, while also including several optional enhancements.  Such enhancements may or may not be brought back into the 3GPP CT1 working group for consideration.'
+  description: 'Note: The above download will output the 3GPP-based Call Authentication APIs in OpenAPI format.
+
+
+    Definition of the Application Server HTTP messages and data types for signing and verification using the Ms reference point. These APIs are designed to be compliant with the referenced 3GPP specification, while also including several optional enhancements. Such enhancements may or may not be brought back into the 3GPP CT1 working group for consideration.'
   contact: {}
   version: 1.0, TS 24.229, Release 17.10.0
 servers:
 - url: http://localhost:8080/stir/v1
   description: signing resource URI
 tags:
-- name: signing
-  description: Used to construct a PASSporT "shaken" JSON Web Token, a PASSporT "div" JSON Web Token or a PASSporT "rph" JSON Web Token.  Also, referred to as the Secure Telephone Identity Authentication Service (STI-AS).
+- name: Signing
+  description: Used to construct a PASSporT "shaken" JSON Web Token, a PASSporT "div" JSON Web Token or a PASSporT "rph" JSON Web Token. Also, referred to as the Secure Telephone Identity Authentication Service (STI-AS).
 paths:
   /signing:
     post:
       tags:
-      - signing
+      - Signing
       summary: Signing (STI-AS) Request
       operationId: signingPOST
       requestBody:
@@ -168,21 +171,6 @@ paths:
                     description: The request failed due to internal error
 components:
   schemas:
-    signingResponse:
-      title: signingResponse
-      properties:
-        signingResponse:
-          description: JSON structure of the signing response
-          type: object
-          required:
-          - identityHeader
-          properties:
-            identityHeader:
-              type: string
-              description: Identity header field value according to RFC 8224. This string cannot be NULL
-            requestId:
-              type: string
-              description: An opaque identifier that is reflected from the request to support troubleshooting and fault analysis
     signingRequest:
       title: signingRequest
       properties:
@@ -276,3 +264,18 @@ components:
               type: string
               description: An opaque identifier that, when provided, is reflected in the response to support troubleshooting and fault analysis
               example: '12378'
+    signingResponse:
+      title: signingResponse
+      properties:
+        signingResponse:
+          description: JSON structure of the signing response
+          type: object
+          required:
+          - identityHeader
+          properties:
+            identityHeader:
+              type: string
+              description: Identity header field value according to RFC 8224. This string cannot be NULL
+            requestId:
+              type: string
+              description: An opaque identifier that is reflected from the request to support troubleshooting and fault analysis
