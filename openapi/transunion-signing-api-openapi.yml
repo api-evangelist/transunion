@@ -171,6 +171,21 @@ paths:
                     description: The request failed due to internal error
 components:
   schemas:
+    signingResponse:
+      title: signingResponse
+      properties:
+        signingResponse:
+          description: JSON structure of the signing response
+          type: object
+          required:
+          - identityHeader
+          properties:
+            identityHeader:
+              type: string
+              description: Identity header field value according to RFC 8224. This string cannot be NULL
+            requestId:
+              type: string
+              description: An opaque identifier that is reflected from the request to support troubleshooting and fault analysis
     signingRequest:
       title: signingRequest
       properties:
@@ -264,18 +279,3 @@ components:
               type: string
               description: An opaque identifier that, when provided, is reflected in the response to support troubleshooting and fault analysis
               example: '12378'
-    signingResponse:
-      title: signingResponse
-      properties:
-        signingResponse:
-          description: JSON structure of the signing response
-          type: object
-          required:
-          - identityHeader
-          properties:
-            identityHeader:
-              type: string
-              description: Identity header field value according to RFC 8224. This string cannot be NULL
-            requestId:
-              type: string
-              description: An opaque identifier that is reflected from the request to support troubleshooting and fault analysis

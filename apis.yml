@@ -3,17 +3,22 @@ url: https://raw.githubusercontent.com/api-evangelist/transunion/refs/heads/main
 name: TransUnion
 type: Index
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - iovation/deviceprint-sdk-android
+    - iovation/deviceprint-sdk-ios
+    - neustar/tcs-apis
   open_source: unknown
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: contract
@@ -29,6 +34,16 @@ accessModel:
   method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/transunion.png
 tags:
+  - Finance
+  - Credit Reporting
+  - Risk Management
+  - Identity
+  - Fraud Prevention
+  - Marketing
+  - Telecommunications
+  - Call Authentication
+  - STIR/SHAKEN
+tags_raw:
   - Financial
   - Credit Reporting
   - Risk
