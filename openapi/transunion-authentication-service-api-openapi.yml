@@ -9010,6 +9010,40 @@ components:
             key:
               type: string
               description: The attribute name of 'uri' in the name/value pair
+    ErrorResponse400:
+      required:
+      - error_id
+      - http_status_code
+      - sip_code
+      - reason
+      - timestamp
+      type: object
+      properties:
+        error_id:
+          type: string
+          description: The unique error identifier
+        http_status_code:
+          type: integer
+          description: The HTTP response status code
+        sip_code:
+          type: string
+          description: The SIP response code associated with the error
+        timestamp:
+          type: string
+          description: The timestamp when the error is generated
+        reason:
+          type: string
+          description: The detailed error text
+        developer_message:
+          type: string
+          description: The additional developer message, if any
+        attributes:
+          type: object
+          description: The name/value pair attribute map associated with the error
+          properties:
+            key:
+              type: string
+              description: The attribute name of 'uri' in the name/value pair
     Identity:
       required:
       - from
@@ -9136,37 +9170,3 @@ components:
           type: string
           description: The SIP 'Priority' header value from SIP INVITE message. If specified, must be psap-callback
           example: psap-callback
-    ErrorResponse400:
-      required:
-      - error_id
-      - http_status_code
-      - sip_code
-      - reason
-      - timestamp
-      type: object
-      properties:
-        error_id:
-          type: string
-          description: The unique error identifier
-        http_status_code:
-          type: integer
-          description: The HTTP response status code
-        sip_code:
-          type: string
-          description: The SIP response code associated with the error
-        timestamp:
-          type: string
-          description: The timestamp when the error is generated
-        reason:
-          type: string
-          description: The detailed error text
-        developer_message:
-          type: string
-          description: The additional developer message, if any
-        attributes:
-          type: object
-          description: The name/value pair attribute map associated with the error
-          properties:
-            key:
-              type: string
-              description: The attribute name of 'uri' in the name/value pair
