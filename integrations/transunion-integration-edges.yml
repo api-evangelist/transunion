@@ -2,6 +2,7 @@ generated: '2026-10-14'
 method: searched
 checked:
 - duck-creek/integrations/duck-creek-integration-edges.yml
+- https://registry.financialdataexchange.org/
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
 marketplace_apps: []
 edges:
@@ -45,5 +46,29 @@ edges:
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
   category: Solution
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-recipient
+    member_type: MEMBER
+    registered_name: Transunion
+    register_id: 146
+    registered_website: https://www.transunion.com
+    country: United States
+    fdx_version: null
+    matched_by: domain:transunion.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-14'
 source:
 - duck-creek/integrations/duck-creek-integration-edges.yml
