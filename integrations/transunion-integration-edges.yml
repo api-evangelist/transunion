@@ -1,0 +1,49 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- duck-creek/integrations/duck-creek-integration-edges.yml
+- https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+marketplace_apps: []
+edges:
+- partner_name: Google Ad Tech Providers
+  partner: null
+  partner_match: domain+verified
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+  contract_reference:
+    register: Google Ad Tech Providers (Additional Consent)
+    spec_file: null
+    role: google-atp
+    registered_name: Neustar
+    register_id: '1047'
+    products:
+    - Neustar
+    matched_domain: transunion.com
+    api_families: null
+    api_families_basis: null
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
+  detected_by: sweep-adtech.py
+  detected: '2026-10-14'
+- partner_name: Duck Creek (own)
+  partner: duck-creek
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.duckcreek.com/partner/transunion/
+  mirror_of: duck-creek/integrations/duck-creek-integration-edges.yml
+  apps:
+  - TransUnion
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Solution
+source:
+- duck-creek/integrations/duck-creek-integration-edges.yml
