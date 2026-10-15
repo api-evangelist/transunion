@@ -65,3 +65,41 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: transunion-uk-dvs-register-dsit
+  label: UK DVS register (DSIT)
+  partner_name: UK DVS register (DSIT)
+  category: Digital identity verification
+  type: register
+  channel: regulator-register
+  evidence: https://www.access-dvs-register.service.gov.uk/register/service-details?serviceId=307
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: UK digital verification services register (DIATF; access-dvs-register.service.gov.uk)
+    spec_file: null
+    standard: UK DIATF (digital verification services)
+    role: dvs-registered
+    registered_name: TransUnion International UK Limited
+    trading_name: Not applicable
+    register_id: TransUnion International UK Limited
+    website: www.transunion.co.uk
+    matched_domain: transunion.com
+    matched_by: domain+verified
+    certified_products:
+    - product: Attribute service
+      newest_expiry: '2029-07-16'
+      lapsed: false
+    - product: Identity service
+      newest_expiry: '2029-07-16'
+      lapsed: false
+    dvs_services:
+    - TruValidate
+    conformity_assessment_bodies:
+    - Kantara
+    signal_note: certified_products = one entry per ROLE certified (identity / attribute / orchestration...), lapsed
+      when every certificate for the role has expired; services and schemes are context
+    detected_by: sweep-regtech-aml.py
+    detected: '2026-10-15'
+    verified: TransUnion's UK operating company (transunion.co.uk); all/transunion is named 'TransUnion'
+  status: not-a-workflow
+  arazzo: null
