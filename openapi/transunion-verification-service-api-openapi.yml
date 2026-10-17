@@ -6385,6 +6385,53 @@ components:
           type: boolean
           example: true
           description: Optional boolean flag for generating "rcdi" value. It's the flag for generating RCD PASSporT integrity hash. If specified, must be either true or false, with default as true
+    VerifyErrorResponse:
+      required:
+      - error
+      - error_id
+      - http_status_code
+      - sip_code
+      - reason
+      - timestamp
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+          description: Verification status
+        error:
+          type: array
+          description: Array of errors
+          items:
+            required:
+            - error_id
+            - http_status_code
+            - sip_code
+            - reason
+            - timestamp
+            type: object
+            properties:
+              error_id:
+                type: string
+                description: The unique error identifier
+              http_status_code:
+                type: integer
+                description: The HTTP response status code
+              sip_code:
+                type: integer
+                description: The SIP response code associated with the error
+              reason:
+                type: string
+                description: The detailed error text
+              timestamp:
+                type: string
+                description: The timestamp when the error is generated
+              attributes:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: any key value pair
     VerifyResponse:
       type: object
       properties:
@@ -6513,50 +6560,3 @@ components:
               example: Alice
               description: Original calling name value
           type: object
-    VerifyErrorResponse:
-      required:
-      - error
-      - error_id
-      - http_status_code
-      - sip_code
-      - reason
-      - timestamp
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-          description: Verification status
-        error:
-          type: array
-          description: Array of errors
-          items:
-            required:
-            - error_id
-            - http_status_code
-            - sip_code
-            - reason
-            - timestamp
-            type: object
-            properties:
-              error_id:
-                type: string
-                description: The unique error identifier
-              http_status_code:
-                type: integer
-                description: The HTTP response status code
-              sip_code:
-                type: integer
-                description: The SIP response code associated with the error
-              reason:
-                type: string
-                description: The detailed error text
-              timestamp:
-                type: string
-                description: The timestamp when the error is generated
-              attributes:
-                type: object
-                properties:
-                  key:
-                    type: string
-                    description: any key value pair
