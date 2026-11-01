@@ -1,4 +1,4 @@
-# TransUnion (transunion)
+# TransUnion
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,21 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-A global information and insights company providing credit reporting, risk, fraud, and identity solutions. One of the three largest consumer credit bureaus in the United States, serving businesses and consumers across multiple international markets.
+A global information and insights company providing credit reporting, risk, fraud, and identity solutions. One of the three largest consumer credit bureaus in the United States, serving businesses and consumers across multiple international markets. Its credit and TruValidate decisioning APIs are contract-gated, but its TruContact Trusted Call Solutions business — acquired with Neustar in December 2021 — publishes an open, MIT-licensed OpenAPI for the STIR/SHAKEN call authentication and verification service.
 
-**URL:** [https://www.transunion.com/](https://www.transunion.com/)
+**Areas:** Finance · Credit Reporting · Risk Management · Identity · Fraud Prevention · Marketing · Telecommunications · Call Authentication · STIR/SHAKEN
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=transunion-api-evangelist&utm_content=repo)
+## TransUnion on APIs.io
 
-## Tags:
+Everything profiled for TransUnion is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/transunion/](https://apis.io/providers/transunion/)** — or go straight to one of the APIs or properties below.
 
- - Financial, Credit Reporting, Risk, Identity, Fraud, Marketing
+### APIs (7)
 
-## Timestamps
+- [TransUnion Global Developer Portal](https://apis.io/apis/transunion/global-developer-portal/) — TransUnion's API products for credit reporting, identity verification, fraud prevention and consumer risk decisioning. Access requires a business agreement…
+- [TransUnion TruValidate Device Risk](https://apis.io/apis/transunion/truvalidate-device-risk/) — Device recognition and fraud signals, formerly iovation FraudForce. Mobile SDKs collect a device "blackbox" that is submitted to a risk check from your…
+- [TransUnion Authentication Service API](https://apis.io/apis/transunion/transunion-authentication-service-api/) — This API endpoint uses the following data elements ('required' elements identified) in the REQUEST to create a SIP Identity header. Based on the HTTP header…
+- [TransUnion Signing API](https://apis.io/apis/transunion/transunion-signing-api/) — Used to construct a PASSporT "shaken" JSON Web Token, a PASSporT "div" JSON Web Token or a PASSporT "rph" JSON Web Token. Also, referred to as the Secure…
+- [TransUnion Verification API](https://apis.io/apis/transunion/transunion-verification-api/) — Used to verify one or more PASSporT JSON Web Tokens (or Identity headers). Also, referred to as the STI Verification Service (STI-VS).
+- [TransUnion Verification Service API](https://apis.io/apis/transunion/transunion-verification-service-api/) — Currently, a RESTful API client is required to provide an 'apiKey' query parameter with a pre-provisioned value to access API calls that are restricted. If…
+- [TransUnion Verification Service with Call Validation Treatment (CVT) API](https://apis.io/apis/transunion/transunion-verification-service-with-call-validation-treatment-cvt-api/) — The Verification Service with Call Validation Treatment (CVT) API from TransUnion — 1 operation(s) for verification service with call validation treatment…
 
-- **Created:** 2026-05-05
-- **Modified:** 2026-05-16
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **TransUnion Global Developer Portal** — [developer.transunion.com](https://developer.transunion.com/) — API products covering credit, identity verification, fraud prevention, and consumer risk decisioning. Production access typically requires a business agreement with TransUnion.
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [transunion-trucontact-tcs](https://apis.io/servers/transunion/transunion-trucontact-tcs/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [3GPP-based Call Authentication APIs](https://apis.io/collections/transunion/open-transunion-trucontact-3gpp-call-authentication/)
+- [STIR/SHAKEN Authentication & Verification Service APIs](https://apis.io/collections/transunion/open-transunion-trucontact-tcs-shaken/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Transunion Trucontact 3Gpp Call Authentication Overlay](https://apis.io/overlays/transunion/transunion-trucontact-3gpp-call-authentication-overlay/)
+- [Transunion Trucontact Tcs Shaken Overlay](https://apis.io/overlays/transunion/transunion-trucontact-tcs-shaken-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Transunion Authentication](https://apis.io/security/transunion/transunion-authentication/)
+- [Transunion Domain Security](https://apis.io/security/transunion/transunion-domain-security/)
+- [Transunion Vulnerability Disclosure](https://apis.io/security/transunion/transunion-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Transunion Plans Pricing](https://apis.io/plans/transunion/transunion-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Transunion Rate Limits](https://apis.io/rate-limits/transunion/transunion-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.transunion.com/)
+- [Blog](https://newsroom.transunion.com/feed/)
+- [Security](https://hackerone.com/transunion)
+- [GitHub](https://github.com/neustar)
+
+## API Evangelist rating
+
+**Kin Score 26.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.0 |
+| Contract quality | 43.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 39.9 |
+| Access clarity | 0.0 |
+
+**Agent readiness 29.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.2** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/transunion/](https://apis.io/providers/transunion/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TransUnion: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/transunion/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
